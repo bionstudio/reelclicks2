@@ -1,0 +1,55 @@
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { PRELOADER_KEY, siteConfig } from "@/lib/config";
+import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "REELCLICKS.IN | Cinematic Wedding & Brand Films in Maharashtra",
+    template: "%s | REELCLICKS.IN",
+  },
+  description: siteConfig.description,
+  openGraph: { images: [{ url: "/og", width: 1200, height: 630 }] },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0A",
+  colorScheme: "dark",
+};
+
+// Runs before paint:
+//  - data-js: enables reveal styles
+//  - data-preloaded: skips the preloader on repeat visits this session
+//  - data-lite: low-end device or Data Saver → lighter motion, no background video
+const bootScript = `(function(){var d=document.documentElement,n=navigator;d.setAttribute('data-js','');try{if(sessionStorage.getItem('${PRELOADER_KEY}'))d.setAttribute('data-preloaded','')}catch(e){}try{var c=n.connection;if((c&&c.saveData)||(n.deviceMemory&&n.deviceMemory<=2)||(n.hardwareConcurrency&&n.hardwareConcurrency<=2))d.setAttribute('data-lite','')}catch(e){}})();`;
+
+/** Root shell shared by the website and the embedded Studio. */
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${cormorant.variable} ${manrope.variable} h-full antialiased`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+      </head>
+      <body className="flex min-h-full flex-col bg-ink text-ivory">{children}</body>
+    </html>
+  );
+}

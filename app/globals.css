@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   REELCLICKS.IN — Design tokens (Tailwind v4)
+   Usage: bg-ink, text-ivory, border-gold, font-display …
+   ───────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-ink: #0a0a0a;
+  --color-charcoal: #141414;
+  --color-gold: #c9a96e;
+  --color-gold-soft: #e6d3a3;
+  --color-ivory: #f3eee6;
+  --color-muted: #8a857c;
+  --color-hairline: rgb(201 169 110 / 0.25);
+
+  /* Fonts (CSS variables injected by next/font in app/layout.tsx) */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  /* Label tracking */
+  --tracking-label: 0.3em;
+
+  /* Cinematic easing */
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power3-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  /* Letterbox aspect ratios */
+  --aspect-cinema: 2.39 / 1;
+  --aspect-reel: 9 / 16;
+}
+
+/* ── Base ─────────────────────────────────── */
+@layer base {
+  html {
+    background-color: var(--color-ink);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 4px;
+  }
+
+  /* Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2824 var(--color-ink);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2824;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+  }
+}
+
+/* ── Utilities ────────────────────────────── */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@utility hairline {
+  border-color: var(--color-hairline);
+  border-width: 1px;
+}
+
+@utility container-cinema {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1600px;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Soft vignette — apply to a positioned media wrapper */
+@utility vignette {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 45%,
+      rgb(0 0 0 / 0.65) 100%
+    );
+  }
+}
+
+/* Gradient placeholder used until real media is uploaded */
+@utility placeholder-media {
+  background:
+    radial-gradient(120% 80% at 30% 20%, rgb(201 169 110 / 0.18), transparent 60%),
+    radial-gradient(90% 70% at 80% 90%, rgb(230 211 163 / 0.08), transparent 60%),
+    linear-gradient(160deg, #1b1916 0%, #0e0d0c 55%, #050505 100%);
+}
+
+@utility footer-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--color-ivory);
+  transition: color 0.4s var(--ease-expo-out);
+  &:hover {
+    color: var(--color-gold-soft);
+  }
+}
+
+@utility carousel-btn {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(201 169 110 / 0.4);
+  color: var(--color-ivory);
+  transition: border-color 0.4s, color 0.4s;
+  &:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Skip rendering of off-screen sections until they're near view (faster load, offscreen animations paused). */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* ── JS-driven reveals ────────────────────── */
+/*
+ * Hidden until GSAP runs (html[data-js] is set by an inline script).
+ * opacity (not visibility) keeps the content readable by screen readers before it animates in.
+ */
+html[data-js] [data-reveal]:not([data-reveal="mount"]) {
+  opacity: 0;
+}
+/*
+ * Hero text ("mount" reveals + .hero-fade): on a first visit it paints right away
+ * underneath the preloader, so LCP happens at first paint; GSAP then tucks it away
+ * and reveals it as the letterbox opens. On repeat visits (no preloader) it stays
+ * hidden until the reveal runs, avoiding a flash.
+ */
+html[data-js][data-preloaded] [data-reveal="mount"],
+html[data-js][data-preloaded] .hero-fade {
+  opacity: 0;
+}
+html[data-js] [data-reveal] .reveal-line {
+  padding-bottom: 0.06em;
+}
+
+/* Hero scroll cue */
+.scroll-line {
+  animation: scroll-line 2.4s var(--ease-expo-out) infinite;
+}
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* Infinite marquee (Instagram reels) */
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* Service-area map points */
+.map-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-pulse 2.8s var(--ease-expo-out) infinite;
+}
+@keyframes map-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Slow cinematic zoom (Ken Burns) */
+.slow-zoom {
+  animation: slow-zoom 22s ease-out infinite alternate;
+}
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+
+/* Editorial drop-cap on the first paragraph */
+.drop-cap > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 5.6em;
+  line-height: 0.78;
+  font-weight: 300;
+  padding: 0.06em 0.1em 0 0;
+  color: var(--color-gold);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Lite mode (low-end devices / Data Saver): drop the costliest continuous effects. */
+html[data-lite] .film-grain,
+html[data-lite] .slow-zoom {
+  animation: none;
+}
+html[data-lite] .film-grain {
+  display: none;
+}
+
+/* Preloader is skipped on repeat visits in the same session. */
+html[data-preloaded] .preloader {
+  display: none;
+}
+
+/* ── Film grain overlay (whole site) ──────── */
+.film-grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -2%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Reduced motion ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .film-grain {
+    animation: none;
+  }
+}
