@@ -3,10 +3,6 @@ import config from "../../../sanity.config";
 
 export { metadata, viewport } from "next-sanity/studio";
 
-export function generateStaticParams() {
-  return [{ tool: [] }];
-}
-
 /** Embedded Sanity Studio — log in with your Sanity account. */
 export default function StudioPage() {
   return <NextStudio config={config} />;
