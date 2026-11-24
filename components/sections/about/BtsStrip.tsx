@@ -37,11 +37,11 @@ export function BtsStrip({ images }: { images: SanityImage[] }) {
       <div className="container-cinema flex items-end justify-between gap-6">
         <div>
           <SectionLabel>Behind The Scenes</SectionLabel>
-          <h2 id="bts-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-7xl">
-            Where the magic <em className="text-gold-soft">is made.</em>
+          <h2 id="bts-title" className="mt-6 font-display text-[44px] leading-[0.95] md:text-7xl">
+            Where the magic <em className="text-red">is made.</em>
           </h2>
         </div>
-        <p className="label hidden text-muted md:block">Drag to explore →</p>
+        <p className="label hidden text-paper/60 md:block">Drag to explore →</p>
       </div>
 
       <div
@@ -59,7 +59,7 @@ export function BtsStrip({ images }: { images: SanityImage[] }) {
         {tiles.map((img, i) => (
           <figure
             key={i}
-            className={`relative shrink-0 snap-start overflow-hidden bg-charcoal ${
+            className={`relative shrink-0 snap-start overflow-hidden bg-surface ${
               i % 3 === 1 ? "aspect-3/4 w-[62vw] md:w-[22vw]" : "aspect-4/3 w-[80vw] md:w-[34vw]"
             } ${i % 2 ? "md:mt-16" : ""}`}
           >
@@ -70,7 +70,7 @@ export function BtsStrip({ images }: { images: SanityImage[] }) {
               sizes="(min-width: 768px) 34vw, 80vw"
               className="pointer-events-none"
             />
-            <figcaption className="label absolute bottom-4 left-4 text-ivory/70">
+            <figcaption className="label absolute bottom-4 left-4 text-paper/70">
               {String(i + 1).padStart(2, "0")} · {img?.alt || CAPTIONS[i % CAPTIONS.length]}
             </figcaption>
           </figure>

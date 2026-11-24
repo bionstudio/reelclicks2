@@ -33,7 +33,8 @@ export function Numbers({ stats }: { stats: Stat[] }) {
   );
 
   return (
-    <section ref={root} className="container-cinema pb-24 md:pb-40" aria-label="REELCLICKS in numbers">
+    <section ref={root} className="theme-light" aria-label="REELCLICKS in numbers">
+      <div className="container-cinema pb-24 md:pb-36">
       <dl className="grid grid-cols-2 border-t border-hairline lg:grid-cols-4">
         {stats.slice(0, 4).map((s, i) => (
           <div
@@ -42,16 +43,17 @@ export function Numbers({ stats }: { stats: Stat[] }) {
               i % 2 === 0 ? "pr-4" : "border-l border-hairline pl-6"
             } ${i > 0 ? "lg:border-l lg:pl-8" : ""}`}
           >
-            <dt className="label text-muted">{s.label}</dt>
-            <dd className="font-display text-6xl leading-none font-light text-ivory md:text-8xl">
+            <dt className="label text-paper/60">{s.label}</dt>
+            <dd className="font-display text-6xl leading-none font-bold text-paper md:text-8xl xl:text-9xl">
               <span className="stat-value" data-value={s.value}>
                 {s.value.toLocaleString("en-IN")}
               </span>
-              <span className="text-gold">{s.suffix}</span>
+              <span className="text-red">{s.suffix}</span>
             </dd>
           </div>
         ))}
       </dl>
+      </div>
     </section>
   );
 }

@@ -70,15 +70,15 @@ function Cursor() {
           "flex items-center justify-center rounded-full border transition-[width,height,background-color,border-color,opacity] duration-500 ease-expo-out",
           visible ? "opacity-100" : "opacity-0",
           labelled
-            ? "h-24 w-24 border-gold bg-gold/90 backdrop-blur-sm"
+            ? "h-24 w-24 border-red bg-red/90 backdrop-blur-sm"
             : mode === "link"
-              ? "h-14 w-14 border-gold/80 bg-gold/10"
-              : "h-8 w-8 border-gold/70 bg-transparent",
+              ? "h-14 w-14 border-red/80 bg-red/10"
+              : "h-8 w-8 border-red/70 bg-transparent",
         )}
       >
         <span
           className={cn(
-            "label text-[0.6rem] text-ink transition-opacity duration-300",
+            "label text-[0.6rem] text-black transition-opacity duration-300",
             labelled ? "opacity-100" : "opacity-0",
           )}
         >

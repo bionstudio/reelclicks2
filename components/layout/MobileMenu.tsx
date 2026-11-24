@@ -38,13 +38,12 @@ function MenuPanel({ onClose }: { onClose: () => void }) {
       role="dialog"
       aria-modal="true"
       aria-label="Menu"
-      className="fixed inset-0 z-70 flex flex-col bg-ink"
+      className="theme-dark fixed inset-0 z-70 flex flex-col bg-black"
       initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
       animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
       exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
       transition={{ duration: 0.8, ease }}
     >
-      <div aria-hidden="true" className="placeholder-media pointer-events-none absolute inset-0 opacity-40" />
 
       <div className="container-cinema relative flex items-center justify-between py-5">
         <Logo className="text-lg" />
@@ -55,8 +54,8 @@ function MenuPanel({ onClose }: { onClose: () => void }) {
           aria-label="Close menu"
           className="relative flex h-11 w-11 items-center justify-center"
         >
-          <span className="absolute h-px w-6 rotate-45 bg-ivory" />
-          <span className="absolute h-px w-6 -rotate-45 bg-gold" />
+          <span className="absolute h-0.5 w-6 rotate-45 rounded-full bg-paper" />
+          <span className="absolute h-0.5 w-6 -rotate-45 rounded-full bg-red" />
         </button>
       </div>
 
@@ -76,11 +75,11 @@ function MenuPanel({ onClose }: { onClose: () => void }) {
                     onClick={onClose}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex items-baseline gap-5 py-1 font-display text-[44px] leading-tight font-light sm:text-6xl",
-                      active ? "text-gold" : "text-ivory",
+                      "flex items-baseline gap-5 py-1 font-display text-[48px] leading-[1.05] font-semibold sm:text-6xl",
+                      active ? "text-red" : "text-paper",
                     )}
                   >
-                    <span className="label text-gold/70">0{i + 1}</span>
+                    <span className="label text-paper/40">0{i + 1}</span>
                     {active ? <em>{item.label}</em> : item.label}
                   </TransitionLink>
                 </motion.div>
@@ -98,8 +97,8 @@ function MenuPanel({ onClose }: { onClose: () => void }) {
       >
         {[founder, ceo].map((p) => (
           <div key={p.tel} className="space-y-1">
-            <p className="label text-gold">{p.role}</p>
-            <a href={telLink(p.tel)} className="block min-h-11 py-2 text-sm text-ivory">
+            <p className="label text-paper/50">{p.role}</p>
+            <a href={telLink(p.tel)} className="block min-h-11 py-2 text-sm text-paper">
               {p.phone}
             </a>
           </div>
@@ -109,7 +108,7 @@ function MenuPanel({ onClose }: { onClose: () => void }) {
           target="_blank"
           rel="noopener noreferrer"
           data-track="whatsapp_click"
-          className="label col-span-2 flex min-h-12 items-center justify-center rounded-full bg-gold text-ink"
+          className="col-span-2 flex min-h-12 items-center justify-center rounded-full bg-red font-semibold text-black"
         >
           WhatsApp Us
         </a>

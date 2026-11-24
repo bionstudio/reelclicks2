@@ -16,6 +16,20 @@ Build plan: see `CLAUDE.md`. One phase at a time; each ends with `npm run build`
 - [x] **Phase 9** — SEO, local city pages & tracking
 - [x] **Phase 10** — Performance, QA & deployment docs. Lighthouse Performance is 82–91 (A11y, Best Practices and SEO are 100); see notes.
 
+## Redesign — Creator × Cinematic (2026-11-25)
+
+Client feedback on the first build: "not modern, colour combination bad, doesn't feel like a creator's website". Also: the founder is an Instagram influencer who promotes businesses, so that's now a headline offer.
+
+- [x] New 3-colour system: Black `#0B0B0B` · Cream `#F4EFE6` · REC Red `#FF3D2E` (chosen by the user). `ink`/`paper` tokens swap inside `.theme-light` / `.theme-red` sections, so dark, cream and red sections alternate.
+- [x] New type: Bricolage Grotesque (bold display), Instrument Serif italic accent words, Manrope body, Geist Mono labels with red ● REC dots
+- [x] Hero redesigned as a camera viewfinder (corner marks, blinking REC, running timecode) + creator intro line + @handle
+- [x] New sections: red services **ticker**, **For Brands & Businesses** (collab reels, promotion shoots, monthly content, "Promote My Business" WhatsApp CTA)
+- [x] Header pill nav, pill buttons, rounded cards, red play badges, red final CTA, giant footer wordmark, black curtain with red edge, new OG image + email colours
+- [x] Demo stock photos (Pexels licence, ~5 MB) in `public/media/demo`; used for any service/portfolio item without a Sanity thumbnail, the hero poster, About hero and BTS strip. **Replace with the client's own work before launch.**
+- [x] Fixed: with reduced motion, the desktop services row is now scrollable (cards 5–8 were unreachable)
+- [x] `CLAUDE.md` design system updated to match
+- [ ] Client: real follower count / collab examples for the For Brands section (copy in `lib/config.ts → homeContent.brands`)
+
 ## Phase 0 checklist
 
 - [x] Next.js 16.4 (App Router, TypeScript, Tailwind v4, ESLint, Turbopack)

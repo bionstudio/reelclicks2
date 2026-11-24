@@ -10,11 +10,14 @@ import {
   getTestimonials,
 } from "@/lib/sanity/fetch";
 import { urlForImage } from "@/lib/sanity/image";
+import { demoImage } from "@/lib/sanity/demo";
 import { buildMetadata, localBusinessJsonLd, showreelJsonLd } from "@/lib/seo";
 import { videoPoster } from "@/lib/video";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/home/Hero";
+import { Ticker } from "@/components/sections/home/Ticker";
 import { Manifesto } from "@/components/sections/home/Manifesto";
+import { ForBrands } from "@/components/sections/home/ForBrands";
 import { Numbers } from "@/components/sections/home/Numbers";
 import { ServicesScroll } from "@/components/sections/home/ServicesScroll";
 import { FeaturedWork } from "@/components/sections/home/FeaturedWork";
@@ -56,12 +59,22 @@ export default async function HomePage() {
 
       <Hero
         label={homeContent.heroLabel}
+        intro={homeContent.heroIntro}
+        handle={settings.instagramHandle}
+        locations={settings.locations}
         showreel={settings.showreel}
         showreelMobile={settings.showreelMobile}
         poster={poster}
       />
+      <Ticker items={homeContent.ticker} />
       <Manifesto text={page.manifesto || homeContent.manifesto} />
       <Numbers stats={stats} />
+      <ForBrands
+        content={homeContent.brands}
+        handle={settings.instagramHandle}
+        whatsapp={settings.founder.whatsapp}
+        images={[demoImage("brand-cafe", "Creators filming a café reel"), demoImage("brand-food", "Filming food content on a gimbal")]}
+      />
       <ServicesScroll services={services} />
       <FeaturedWork items={featured} />
       <Process steps={homeContent.process} />

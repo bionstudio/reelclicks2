@@ -49,13 +49,13 @@ export default async function TeamPage() {
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] font-light text-ivory md:text-[110px] xl:text-[150px]"
+          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] text-paper md:text-[110px] xl:text-[150px]"
         >
           The People
           <br />
-          <em className="text-gold-soft">Behind The Lens.</em>
+          <em className="text-red">Behind The Lens.</em>
         </RevealText>
-        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted">{teamContent.intro}</p>
+        <p className="mt-10 max-w-xl text-lg leading-relaxed text-paper/60">{teamContent.intro}</p>
       </section>
 
       <div className="container-cinema" aria-label="Leadership">
@@ -67,12 +67,12 @@ export default async function TeamPage() {
       <CrewGrid crew={crew} roles={teamContent.crewRoles} />
       <GearStrip gear={gear} />
 
-      <section className="py-28 md:py-44" aria-labelledby="work-with-us">
+      <section className="theme-red py-28 md:py-44" aria-labelledby="work-with-us">
         <div className="container-cinema flex flex-col items-center text-center">
           <SectionLabel line={false}>Work With Us</SectionLabel>
-          <RevealText as="h2" className="mt-8 max-w-4xl font-display text-[48px] leading-[0.95] font-light md:text-[110px]">
+          <RevealText as="h2" className="mt-8 max-w-4xl font-display text-[48px] leading-[0.95] md:text-[110px]">
             <span id="work-with-us">
-              Let&apos;s make something <em className="text-gold-soft">timeless.</em>
+              Let&apos;s make something <em className="text-red">timeless.</em>
             </span>
           </RevealText>
           <div className="mt-12 flex flex-wrap justify-center gap-4">

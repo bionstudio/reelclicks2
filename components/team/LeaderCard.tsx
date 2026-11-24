@@ -8,7 +8,7 @@ import { PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
 export function LeaderCard({ member, index = 0 }: { member: TeamMember; index?: number }) {
   return (
     <article className="group">
-      <div className="relative aspect-4/5 overflow-hidden bg-charcoal">
+      <div className="relative aspect-4/5 overflow-hidden bg-surface">
         <div className="absolute inset-0 grayscale transition-[filter,transform] duration-[1.4s] ease-expo-out group-hover:scale-[1.03] group-hover:grayscale-0">
           <CoverMedia
             image={member.photo}
@@ -18,7 +18,7 @@ export function LeaderCard({ member, index = 0 }: { member: TeamMember; index?: 
           />
         </div>
         {!member.photo && (
-          <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center font-display text-[120px] font-light text-ivory/10">
+          <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center font-display text-[120px] text-paper/10">
             {member.name
               .split(" ")
               .map((n) => n[0])
@@ -26,12 +26,12 @@ export function LeaderCard({ member, index = 0 }: { member: TeamMember; index?: 
           </span>
         )}
         <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-ink/80 via-transparent to-transparent" />
-        <p className="label absolute bottom-5 left-5 text-gold">{member.role}</p>
+        <p className="label absolute bottom-5 left-5 text-red">{member.role}</p>
       </div>
 
-      <h3 className="mt-8 font-display text-4xl font-light text-ivory md:text-5xl">{member.name}</h3>
-      {member.quote && <p className="mt-3 font-display text-xl text-gold-soft italic">“{member.quote}”</p>}
-      {member.bio && <p className="mt-5 max-w-lg leading-relaxed text-muted">{member.bio}</p>}
+      <h3 className="mt-8 font-display text-4xl text-paper md:text-5xl">{member.name}</h3>
+      {member.quote && <p className="mt-3 font-display text-xl text-red italic">“{member.quote}”</p>}
+      {member.bio && <p className="mt-5 max-w-lg leading-relaxed text-paper/60">{member.bio}</p>}
 
       <div className="mt-8 flex flex-wrap gap-3">
         {member.phone && (

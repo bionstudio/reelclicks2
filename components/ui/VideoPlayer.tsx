@@ -109,7 +109,7 @@ export function VideoPlayer({
   }
 
   return (
-    <div ref={wrapRef} className={cn("relative h-full w-full overflow-hidden bg-charcoal", className)}>
+    <div ref={wrapRef} className={cn("relative h-full w-full overflow-hidden bg-surface", className)}>
       {/* Poster / placeholder underneath â€” fades out once video plays */}
       <div
         aria-hidden="true"

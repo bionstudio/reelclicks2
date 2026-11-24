@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
 import { cacheLife } from "next/cache";
 
-const HEADLINE = "Turning MomentsInto Memories.";
-const LABELS = "CINEMATIC STORYTELLING STUDIO — MAHARASHTRA REELCLICKS.IN";
+const HEADLINE = "Turning moments into reelclicks.in";
+const ITALIC = "memories.";
+const LABELS = "REC CREATOR & FILM STUDIO — MAHARASHTRA";
 
 /** Fetches a font subset (TTF) from Google Fonts containing only `text`. */
 async function loadFont(family: string, axis: string, text: string): Promise<ArrayBuffer | null> {
@@ -22,9 +23,9 @@ async function loadFonts() {
   "use cache";
   cacheLife("max");
   return Promise.all([
-    loadFont("Manrope", "wght@500", LABELS),
-    loadFont("Cormorant+Garamond", "ital,wght@0,300", HEADLINE),
-    loadFont("Cormorant+Garamond", "ital,wght@1,300", HEADLINE),
+    loadFont("Manrope", "wght@600", LABELS),
+    loadFont("Bricolage+Grotesque", "wght@700", HEADLINE),
+    loadFont("Instrument+Serif", "ital@1", ITALIC),
   ]);
 }
 
@@ -32,9 +33,9 @@ async function loadFonts() {
 export async function GET() {
   const [sans, serif, serifItalic] = await loadFonts();
   const fonts = [
-    ...(sans ? [{ name: "Manrope", data: sans, style: "normal" as const, weight: 500 as const }] : []),
-    ...(serif ? [{ name: "Cormorant", data: serif, style: "normal" as const, weight: 300 as const }] : []),
-    ...(serifItalic ? [{ name: "Cormorant", data: serifItalic, style: "italic" as const, weight: 300 as const }] : []),
+    ...(sans ? [{ name: "Manrope", data: sans, style: "normal" as const, weight: 600 as const }] : []),
+    ...(serif ? [{ name: "Bricolage", data: serif, style: "normal" as const, weight: 700 as const }] : []),
+    ...(serifItalic ? [{ name: "Instrument", data: serifItalic, style: "italic" as const, weight: 400 as const }] : []),
   ];
 
   return new ImageResponse(
@@ -47,27 +48,26 @@ export async function GET() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 96px",
-          background:
-            "radial-gradient(circle at 25% 20%, rgba(201,169,110,0.25), transparent 55%), linear-gradient(160deg, #1b1916 0%, #0a0a0a 60%)",
-          color: "#F3EEE6",
+          background: "#0B0B0B",
+          color: "#F4EFE6",
           position: "relative",
           fontFamily: "Manrope",
         }}
       >
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 56, background: "#0A0A0A" }} />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 56, background: "#0A0A0A" }} />
-        <div style={{ display: "flex", fontSize: 22, letterSpacing: 8, color: "#C9A96E" }}>
-          CINEMATIC STORYTELLING STUDIO — MAHARASHTRA
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 18, background: "#FF3D2E" }} />
+        <div style={{ display: "flex", alignItems: "center", fontSize: 24, letterSpacing: 3 }}>
+          <div style={{ width: 18, height: 18, borderRadius: 999, background: "#FF3D2E", marginRight: 16 }} />
+          REC — CREATOR &amp; FILM STUDIO — MAHARASHTRA
         </div>
-        <div style={{ display: "flex", fontSize: 104, lineHeight: 1, marginTop: 28, fontFamily: "Cormorant, serif" }}>
-          Turning Moments
+        <div style={{ display: "flex", fontSize: 118, lineHeight: 0.95, marginTop: 30, fontFamily: "Bricolage", letterSpacing: -5 }}>
+          Turning moments
         </div>
-        <div style={{ display: "flex", fontSize: 104, lineHeight: 1, color: "#E6D3A3", fontStyle: "italic", fontFamily: "Cormorant, serif" }}>
-          Into Memories.
+        <div style={{ display: "flex", alignItems: "baseline", fontSize: 118, lineHeight: 1, letterSpacing: -5 }}>
+          <span style={{ fontFamily: "Bricolage" }}>into</span>
+          <span style={{ fontFamily: "Instrument", fontStyle: "italic", color: "#FF3D2E", marginLeft: 28, letterSpacing: -2 }}>memories.</span>
         </div>
-        <div style={{ display: "flex", alignItems: "center", marginTop: 48, fontSize: 30, letterSpacing: 6 }}>
-          <div style={{ width: 64, height: 1, background: "#C9A96E", marginRight: 24 }} />
-          REELCLICKS<span style={{ color: "#C9A96E" }}>.IN</span>
+        <div style={{ display: "flex", marginTop: 48, fontSize: 40, fontFamily: "Bricolage", letterSpacing: -1.5 }}>
+          reelclicks<span style={{ color: "#FF3D2E" }}>.in</span>
         </div>
       </div>
     ),

@@ -35,7 +35,7 @@ export function PortfolioCard({ item, index, onOpen, className, sizes = "(min-wi
         onBlur={() => setHover(false)}
         aria-label={`Play “${item.title}” — ${item.category.title}`}
         className={cn(
-          "relative block w-full overflow-hidden bg-charcoal",
+          "theme-dark relative block w-full overflow-hidden rounded-2xl bg-surface md:rounded-3xl",
           vertical ? "aspect-9/16" : "aspect-video",
         )}
       >
@@ -46,11 +46,11 @@ export function PortfolioCard({ item, index, onOpen, className, sizes = "(min-wi
           )}
         </div>
         <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-transparent opacity-80" />
-        <span aria-hidden="true" className="label absolute top-4 left-4 text-ivory/80">{item.aspectRatio === "9:16" ? "Reel" : "Film"}</span>
+        <span aria-hidden="true" className="label absolute top-4 left-4 rounded-full bg-black/50 px-3 py-1.5 text-paper backdrop-blur">{item.aspectRatio === "9:16" ? "● Reel" : "● Film"}</span>
         {/* Touch devices get a visible play badge */}
         <span
           aria-hidden="true"
-          className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full border border-gold/60 text-gold backdrop-blur-sm lg:opacity-0 lg:transition-opacity lg:group-hover:opacity-100"
+          className="absolute right-4 bottom-4 flex h-12 w-12 items-center justify-center rounded-full bg-red text-black transition-transform duration-500 group-hover:scale-110"
         >
           <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
             <path d="M0 0l12 7-12 7z" />
@@ -59,8 +59,8 @@ export function PortfolioCard({ item, index, onOpen, className, sizes = "(min-wi
       </button>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
-          <h3 className="font-display text-2xl leading-tight font-light text-ivory md:text-3xl">{item.title}</h3>
-          <p className="label mt-2 text-muted">
+          <h3 className="font-display text-2xl leading-tight font-semibold text-paper md:text-3xl">{item.title}</h3>
+          <p className="label mt-2 text-paper/60">
             {item.category.title}
             {item.location ? ` · ${item.location}` : ""}
           </p>

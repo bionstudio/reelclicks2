@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { aboutContent } from "@/lib/config";
+import { demoBts, demoImage } from "@/lib/sanity/demo";
 import { getPage, getSiteSettings, getTeam } from "@/lib/sanity/fetch";
 import { urlForImage } from "@/lib/sanity/image";
 import { breadcrumbJsonLd, buildMetadata, organizationJsonLd, personJsonLd } from "@/lib/seo";
@@ -45,7 +46,7 @@ export default async function AboutPage() {
         <JsonLd key={p["@id"]} data={p} />
       ))}
 
-      <AboutHero intro={aboutContent.intro} image={page.heroImage} />
+      <AboutHero intro={aboutContent.intro} image={page.heroImage ?? demoImage("hero-alt", "Cinema camera operator on set")} />
       <Story blocks={page.story} fallback={aboutContent.story} />
       <VisionValues
         vision={page.vision || aboutContent.vision}
@@ -56,9 +57,9 @@ export default async function AboutPage() {
       <section className="border-t border-hairline py-28 md:py-40" aria-labelledby="leaders-title">
         <div className="container-cinema">
           <SectionLabel>Leadership</SectionLabel>
-          <RevealText as="h2" className="mt-6 max-w-4xl font-display text-[44px] leading-[0.95] font-light md:text-7xl">
+          <RevealText as="h2" className="mt-6 max-w-4xl font-display text-[44px] leading-[0.95] md:text-7xl">
             <span id="leaders-title">
-              The people <em className="text-gold-soft">behind every frame.</em>
+              The people <em className="text-red">behind every frame.</em>
             </span>
           </RevealText>
           <div className="mt-16 grid gap-20 md:mt-24 md:grid-cols-2 md:gap-12 lg:gap-20">
@@ -71,7 +72,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <BtsStrip images={page.gallery ?? []} />
+      <BtsStrip images={page.gallery?.length ? page.gallery : demoBts} />
       <FinalCta title="Let's create your film." whatsapp={settings.founder.whatsapp} />
     </>
   );

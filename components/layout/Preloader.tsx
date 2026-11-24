@@ -67,11 +67,11 @@ export function Preloader() {
 
   return (
     <div ref={root} className="preloader fixed inset-0 z-100" aria-hidden="true">
-      <div className="pl-top absolute inset-x-0 top-0 h-1/2 bg-ink" />
-      <div className="pl-bottom absolute inset-x-0 bottom-0 h-1/2 bg-ink" />
+      <div className="pl-top absolute inset-x-0 top-0 h-1/2 bg-black" />
+      <div className="pl-bottom absolute inset-x-0 bottom-0 h-1/2 bg-black" />
 
       <div className="pl-center absolute inset-0 flex flex-col items-center justify-center">
-        <svg className="pl-iris h-24 w-24 text-gold" viewBox="0 0 100 100" fill="none">
+        <svg className="pl-iris h-24 w-24 text-red" viewBox="0 0 100 100" fill="none">
           <circle
             className="pl-ring"
             cx="50"
@@ -97,7 +97,7 @@ export function Preloader() {
             <Logo className="text-2xl md:text-3xl" />
           </div>
         </div>
-        <span className="pl-line mt-5 block h-px w-24 origin-center scale-x-0 bg-gold/70" />
+        <span className="pl-line mt-5 block h-1 w-24 origin-center scale-x-0 rounded-full bg-red" />
       </div>
     </div>
   );

@@ -55,13 +55,13 @@ export default async function ServicesPage() {
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] font-light text-ivory md:text-[110px] xl:text-[150px]"
+          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] text-paper md:text-[110px] xl:text-[150px]"
         >
           Films crafted
           <br />
-          <em className="text-gold-soft">for every story.</em>
+          <em className="text-red">for every story.</em>
         </RevealText>
-        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted">
+        <p className="mt-10 max-w-xl text-lg leading-relaxed text-paper/60">
           From wedding films to brand campaigns — {services.length} ways we turn your moments into cinema, anywhere in
           Maharashtra.
         </p>
@@ -90,14 +90,14 @@ export default async function ServicesPage() {
         </div>
       </div>
 
-      <section id="faq" className="scroll-mt-28 border-t border-hairline py-28 md:py-40" aria-labelledby="faq-title">
+      <section id="faq" className="theme-light scroll-mt-28 py-28 md:py-40" aria-labelledby="faq-title">
         <div className="container-cinema grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionLabel>FAQ</SectionLabel>
-            <h2 id="faq-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-6xl">
-              Questions, <em className="text-gold-soft">answered.</em>
+            <h2 id="faq-title" className="mt-6 font-display text-[44px] leading-[0.95] md:text-6xl">
+              Questions, <em className="text-red">answered.</em>
             </h2>
-            <p className="mt-6 max-w-sm text-muted">
+            <p className="mt-6 max-w-sm text-paper/60">
               Can&apos;t find what you&apos;re looking for? Message us on WhatsApp — we reply within 2 hours.
             </p>
           </div>

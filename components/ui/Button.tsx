@@ -6,7 +6,7 @@ import { useFinePointer, usePrefersReducedMotion } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/layout/TransitionLink";
 
-type Variant = "gold" | "outline" | "ghost";
+type Variant = "primary" | "outline" | "ghost" | "light";
 type Size = "sm" | "md" | "lg";
 
 type Props = {
@@ -27,15 +27,16 @@ type Props = {
 };
 
 const variants: Record<Variant, string> = {
-  gold: "bg-gold text-ink hover:bg-gold-soft",
-  outline: "border border-gold/60 text-ivory hover:border-gold hover:text-gold-soft",
-  ghost: "text-ivory hover:text-gold-soft",
+  primary: "btn-primary bg-red text-black hover:bg-paper hover:text-ink",
+  outline: "border border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink",
+  ghost: "text-paper underline decoration-red decoration-2 underline-offset-8 hover:text-red",
+  light: "bg-paper text-ink hover:bg-red hover:text-black",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "min-h-11 px-5 text-[0.65rem]",
-  md: "min-h-12 px-7 text-[0.7rem]",
-  lg: "min-h-14 px-9 text-xs",
+  sm: "min-h-11 px-5 text-[0.8rem]",
+  md: "min-h-12 px-6 text-sm",
+  lg: "min-h-14 px-8 text-[0.95rem]",
 };
 
 const isExternal = (href: string) => /^(https?:|mailto:|tel:)/.test(href);
@@ -44,7 +45,7 @@ const isExternal = (href: string) => /^(https?:|mailto:|tel:)/.test(href);
 export function Button({
   children,
   href,
-  variant = "gold",
+  variant = "primary",
   size = "md",
   magnetic = true,
   className,
@@ -80,7 +81,7 @@ export function Button({
   }
 
   const classes = cn(
-    "label relative inline-flex items-center justify-center gap-3 rounded-full transition-colors duration-500 ease-expo-out",
+    "relative inline-flex shrink-0 items-center justify-center gap-2.5 rounded-full font-sans whitespace-nowrap font-semibold tracking-[-0.01em] transition-colors duration-300 ease-expo-out",
     "disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],

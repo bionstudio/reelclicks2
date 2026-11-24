@@ -27,19 +27,19 @@ export function ContactCards({ settings }: { settings: SiteSettings }) {
             href={c.href}
             {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             data-track={c.track}
-            className="group relative flex min-h-36 flex-col justify-between gap-8 overflow-hidden p-7 transition-colors duration-500 hover:bg-charcoal md:min-h-44 md:p-9"
+            className="group relative flex min-h-36 flex-col justify-between gap-8 overflow-hidden p-7 transition-colors duration-500 hover:bg-surface md:min-h-44 md:p-9"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-expo-out group-hover:scale-x-100"
+              className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-red transition-transform duration-700 ease-expo-out group-hover:scale-x-100"
             />
             <span className="flex items-center justify-between">
-              <span className={c.primary ? "text-gold" : "text-ivory/80"}>{c.icon}</span>
-              <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-all duration-500 group-hover:rotate-0 group-hover:text-gold" />
+              <span className={c.primary ? "text-red" : "text-paper/80"}>{c.icon}</span>
+              <ArrowIcon className="h-5 w-5 -rotate-45 text-paper/60 transition-all duration-500 group-hover:rotate-0 group-hover:text-red" />
             </span>
             <span>
-              <span className="block font-display text-3xl font-light text-ivory md:text-4xl">{c.label}</span>
-              <span className="mt-2 block text-sm break-all text-muted">{c.value}</span>
+              <span className="block font-display text-3xl text-paper md:text-4xl">{c.label}</span>
+              <span className="mt-2 block text-sm break-all text-paper/60">{c.value}</span>
             </span>
           </a>
         </li>

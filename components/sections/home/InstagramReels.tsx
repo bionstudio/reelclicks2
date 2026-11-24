@@ -38,7 +38,7 @@ export async function InstagramReels({
             tabIndex={hidden ? -1 : undefined}
             aria-label={t.label}
             data-cursor="view"
-            className="group relative block aspect-9/16 overflow-hidden bg-charcoal"
+            className="theme-dark group relative block aspect-9/16 overflow-hidden rounded-2xl bg-surface"
           >
             <div className="absolute inset-0 transition-transform duration-[1.4s] ease-expo-out group-hover:scale-105">
               {t.image ? (
@@ -47,8 +47,8 @@ export async function InstagramReels({
                 <CoverMedia image={t.item?.thumbnail} alt="" variant={t.variant} sizes="250px" />
               )}
             </div>
-            <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-ink/60 to-transparent" />
-            <InstagramIcon className="absolute right-3 bottom-3 h-5 w-5 text-ivory/80 transition-colors group-hover:text-gold" />
+            <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+            <InstagramIcon className="absolute right-3 bottom-3 h-5 w-5 text-paper transition-colors group-hover:text-red" />
           </a>
         </li>
       ))}
@@ -56,15 +56,15 @@ export async function InstagramReels({
   );
 
   return (
-    <section className="cv-auto overflow-hidden border-t border-hairline py-28 md:py-40" aria-labelledby="instagram-title">
+    <section className="theme-light cv-auto overflow-hidden py-28 md:py-40" aria-labelledby="instagram-title">
       <div className="container-cinema flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <SectionLabel>Instagram</SectionLabel>
-          <h2 id="instagram-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-7xl">
-            Follow the story <em className="text-gold-soft">{handle}</em>
+          <h2 id="instagram-title" className="mt-6 font-display text-[44px] leading-[0.92] md:text-7xl xl:text-8xl">
+            Follow the story <br className="hidden md:block" /><em className="text-red">{handle}</em>
           </h2>
         </div>
-        <Button href={url} newTab variant="outline">
+        <Button href={url} newTab>
           <InstagramIcon className="h-4 w-4" />
           Follow on Instagram
         </Button>

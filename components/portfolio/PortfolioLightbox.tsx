@@ -69,7 +69,7 @@ export function PortfolioLightbox({ items, index, onChange, showStoryLink = true
         item && (
           <div className="mx-auto grid max-h-[32vh] max-w-6xl gap-6 overflow-y-auto md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
-              <h2 className="font-display text-3xl leading-none font-light md:text-5xl">{item.title}</h2>
+              <h2 className="font-display text-3xl leading-none md:text-5xl">{item.title}</h2>
               <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">
                 {[
                   ["Category", item.category.title],
@@ -80,12 +80,12 @@ export function PortfolioLightbox({ items, index, onChange, showStoryLink = true
                   .filter(([, v]) => v)
                   .map(([k, v]) => (
                     <div key={k}>
-                      <dt className="label text-gold">{k}</dt>
-                      <dd className="mt-1 text-ivory/90">{v}</dd>
+                      <dt className="label text-red">{k}</dt>
+                      <dd className="mt-1 text-paper/90">{v}</dd>
                     </div>
                   ))}
               </dl>
-              {item.story && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{item.story}</p>}
+              {item.story && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-paper/60">{item.story}</p>}
             </div>
             <div className="flex flex-wrap gap-3 md:col-span-5 md:justify-end">
               {showStoryLink && (
@@ -127,7 +127,7 @@ export function PortfolioLightbox({ items, index, onChange, showStoryLink = true
             fit="contain"
           />
           {!src && (
-            <p className="label pointer-events-none absolute inset-x-0 bottom-6 text-center text-muted">
+            <p className="label pointer-events-none absolute inset-x-0 bottom-6 text-center text-paper/60">
               Film coming soon
             </p>
           )}

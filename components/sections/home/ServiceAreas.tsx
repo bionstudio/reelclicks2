@@ -41,23 +41,23 @@ const path = OUTLINE.map(([lon, lat], i) => `${i ? "L" : "M"}${x(lon).toFixed(1)
 
 export function ServiceAreas({ locations, serviceArea }: { locations: string[]; serviceArea: string }) {
   return (
-    <section className="cv-auto border-t border-hairline py-28 md:py-40" aria-labelledby="areas-title">
+    <section className="cv-auto py-28 md:py-40" aria-labelledby="areas-title">
       <div className="container-cinema grid items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionLabel>Service Areas</SectionLabel>
-          <h2 id="areas-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-7xl">
-            Rooted in North Maharashtra. <em className="text-gold-soft">Filming everywhere.</em>
+          <h2 id="areas-title" className="mt-6 font-display text-[44px] leading-[0.92] md:text-7xl">
+            Rooted in North Maharashtra. <em className="text-red">Filming everywhere.</em>
           </h2>
-          <p className="mt-8 max-w-md text-muted">
+          <p className="mt-8 max-w-md text-paper/60">
             Based in {locations.join(", ").replace(/, ([^,]*)$/, " and $1")} — {serviceArea.toLowerCase()}.
           </p>
           <ul className="mt-8 flex flex-wrap gap-3">
             {locations.map((l) => (
-              <li key={l} className="label rounded-full border border-gold/40 px-4 py-2.5 text-ivory">
+              <li key={l} className="rounded-full border border-hairline px-4 py-2.5 text-sm font-semibold text-paper">
                 {l}
               </li>
             ))}
-            <li className="label rounded-full bg-gold px-4 py-2.5 text-ink">{serviceArea}</li>
+            <li className="rounded-full bg-red px-4 py-2.5 text-sm font-semibold text-black">{serviceArea}</li>
           </ul>
         </div>
 
@@ -65,20 +65,20 @@ export function ServiceAreas({ locations, serviceArea }: { locations: string[]; 
           <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label={`Map of Maharashtra highlighting ${locations.join(", ")}`}>
             <defs>
               <radialGradient id="map-glow" cx="30%" cy="35%" r="60%">
-                <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.14" />
-                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0" />
+                <stop offset="0%" stopColor="#FF3D2E" stopOpacity="0.12" />
+                <stop offset="100%" stopColor="#FF3D2E" stopOpacity="0" />
               </radialGradient>
               <filter id="dot-glow" x="-200%" y="-200%" width="500%" height="500%">
                 <feGaussianBlur stdDeviation="4" />
               </filter>
             </defs>
-            <path d={path} fill="url(#map-glow)" stroke="#C9A96E" strokeOpacity="0.45" strokeWidth="1" strokeLinejoin="round" />
-            <path d={path} fill="none" stroke="#C9A96E" strokeOpacity="0.12" strokeWidth="10" strokeLinejoin="round" />
+            <path d={path} fill="url(#map-glow)" stroke="#F4EFE6" strokeOpacity="0.35" strokeWidth="1.2" strokeLinejoin="round" />
+            <path d={path} fill="none" stroke="#F4EFE6" strokeOpacity="0.05" strokeWidth="10" strokeLinejoin="round" />
 
             {OTHER.map((c) => (
               <g key={c.name}>
-                <circle cx={x(c.lon)} cy={y(c.lat)} r="2.2" fill="#8A857C" />
-                <text x={x(c.lon) + 8} y={y(c.lat) + 4} fill="#8A857C" fontSize="11" letterSpacing="2" className="font-sans uppercase">
+                <circle cx={x(c.lon)} cy={y(c.lat)} r="2.2" fill="#F4EFE6" fillOpacity="0.4" />
+                <text x={x(c.lon) + 8} y={y(c.lat) + 4} fill="#F4EFE6" fillOpacity="0.45" fontSize="11" letterSpacing="1" className="font-mono uppercase">
                   {c.name}
                 </text>
               </g>
@@ -86,25 +86,26 @@ export function ServiceAreas({ locations, serviceArea }: { locations: string[]; 
 
             {HOME.map((c, i) => (
               <g key={c.name}>
-                <circle cx={x(c.lon)} cy={y(c.lat)} r="9" fill="#E6D3A3" opacity="0.6" filter="url(#dot-glow)" />
+                <circle cx={x(c.lon)} cy={y(c.lat)} r="9" fill="#FF3D2E" opacity="0.7" filter="url(#dot-glow)" />
                 <circle
                   cx={x(c.lon)}
                   cy={y(c.lat)}
                   r="4"
                   fill="none"
-                  stroke="#C9A96E"
+                  stroke="#FF3D2E"
                   className="map-pulse"
                   style={{ animationDelay: `${i * 0.6}s` }}
                 />
-                <circle cx={x(c.lon)} cy={y(c.lat)} r="3.5" fill="#C9A96E" />
+                <circle cx={x(c.lon)} cy={y(c.lat)} r="4" fill="#FF3D2E" />
                 <text
                   x={x(c.lon) + c.dx}
                   y={y(c.lat) + c.dy}
                   textAnchor={c.anchor}
-                  fill="#F3EEE6"
+                  fill="#F4EFE6"
                   fontSize="13"
-                  letterSpacing="2.5"
-                  className="font-sans uppercase"
+                  fontWeight="600"
+                  letterSpacing="1"
+                  className="font-mono uppercase"
                 >
                   {c.name}
                 </text>

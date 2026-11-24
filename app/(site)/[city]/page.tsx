@@ -70,11 +70,11 @@ export default async function CityLandingPage({ params }: PageProps<"/[city]">) 
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 max-w-6xl font-display text-[48px] leading-[0.92] font-light text-ivory md:text-[100px] xl:text-[136px]"
+          className="mt-8 max-w-6xl font-display text-[48px] leading-[0.92] text-paper md:text-[100px] xl:text-[136px]"
         >
           {page.headline || `Wedding Cinematographer in ${page.city}`}
         </RevealText>
-        {page.intro && <p className="mt-10 max-w-2xl text-lg leading-relaxed text-muted">{page.intro}</p>}
+        {page.intro && <p className="mt-10 max-w-2xl text-lg leading-relaxed text-paper/60">{page.intro}</p>}
         <div className="mt-12 flex flex-wrap gap-4">
           <Button href={whatsappLink(settings.founder.whatsapp, waText)} newTab size="lg" data-track="whatsapp_click">
             <WhatsAppIcon className="h-4 w-4" />
@@ -88,14 +88,14 @@ export default async function CityLandingPage({ params }: PageProps<"/[city]">) 
 
       {/* Unique local copy */}
       {page.body?.length ? (
-        <section className="border-t border-hairline py-24 md:py-36" aria-labelledby="city-story">
+        <section className="theme-light py-24 md:py-36" aria-labelledby="city-story">
           <div className="container-cinema grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <SectionLabel as="h2">
                 <span id="city-story">Filming in {page.city}</span>
               </SectionLabel>
             </div>
-            <div className="drop-cap space-y-6 text-lg leading-relaxed text-ivory/80 lg:col-span-8 [&>p]:max-w-3xl">
+            <div className="drop-cap space-y-6 text-lg leading-relaxed text-paper/80 lg:col-span-8 [&>p]:max-w-3xl">
               <PortableText value={page.body} />
             </div>
           </div>
@@ -108,14 +108,14 @@ export default async function CityLandingPage({ params }: PageProps<"/[city]">) 
           <div className="container-cinema grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <SectionLabel>Our Work</SectionLabel>
-              <h2 id="city-films" className="mt-6 font-display text-[40px] leading-[0.95] font-light md:text-6xl">
+              <h2 id="city-films" className="mt-6 font-display text-[40px] leading-[0.95] md:text-6xl">
                 {cityFilms.length ? (
                   <>
-                    Films from <em className="text-gold-soft">{page.city}.</em>
+                    Films from <em className="text-red">{page.city}.</em>
                   </>
                 ) : (
                   <>
-                    Recent <em className="text-gold-soft">films.</em>
+                    Recent <em className="text-red">films.</em>
                   </>
                 )}
               </h2>
@@ -145,12 +145,12 @@ export default async function CityLandingPage({ params }: PageProps<"/[city]">) 
                     className="group flex min-h-16 items-center justify-between gap-6 py-4"
                   >
                     <span className="flex items-baseline gap-5">
-                      <span className="label text-gold">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="font-display text-2xl font-light text-ivory transition-colors group-hover:text-gold-soft md:text-3xl">
+                      <span className="label text-red">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-display text-2xl text-paper transition-colors group-hover:text-red md:text-3xl">
                         {s.title}
                       </span>
                     </span>
-                    <ArrowIcon className="h-5 w-5 shrink-0 text-muted transition-all group-hover:translate-x-1 group-hover:text-gold" />
+                    <ArrowIcon className="h-5 w-5 shrink-0 text-paper/60 transition-all group-hover:translate-x-1 group-hover:text-red" />
                   </TransitionLink>
                 </li>
               ))}
@@ -167,7 +167,7 @@ export default async function CityLandingPage({ params }: PageProps<"/[city]">) 
                     </TransitionLink>
                   </li>
                 ))}
-                <li className="pt-4 text-sm text-muted">…and {siteConfig.serviceArea.toLowerCase()}.</li>
+                <li className="pt-4 text-sm text-paper/60">…and {siteConfig.serviceArea.toLowerCase()}.</li>
               </ul>
             </div>
           )}

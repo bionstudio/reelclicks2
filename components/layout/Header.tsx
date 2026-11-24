@@ -33,10 +33,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding] duration-700 ease-expo-out",
+          "theme-dark fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding] duration-700 ease-expo-out",
           scrolled
-            ? "border-b border-hairline bg-ink/75 py-3 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent py-5 md:py-7",
+            ? "border-b border-hairline bg-black/80 py-3 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent py-5 md:py-6",
         )}
       >
         <div className="container-cinema flex items-center justify-between gap-6">
@@ -45,25 +45,19 @@ export function Header() {
           </TransitionLink>
 
           <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-9">
+            <ul className="flex items-center gap-1 rounded-full border border-hairline bg-black/40 p-1 backdrop-blur-md">
               {navigation.map((item) => (
                 <li key={item.href}>
                   <TransitionLink
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={cn(
-                      "label group relative py-2 transition-colors duration-500",
-                      isActive(item.href) ? "text-gold" : "text-ivory/80 hover:text-ivory",
+                      "relative inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium transition-colors duration-300",
+                      isActive(item.href) ? "bg-paper text-ink" : "text-paper/75 hover:text-paper",
                     )}
                   >
+                    {isActive(item.href) && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-red" />}
                     {item.label}
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "absolute -bottom-0.5 left-0 h-px w-full origin-left bg-gold transition-transform duration-700 ease-expo-out",
-                        isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
-                      )}
-                    />
                   </TransitionLink>
                 </li>
               ))}
@@ -90,8 +84,8 @@ export function Header() {
                 setMenuOpen(true);
               }}
             >
-              <span className="block h-px w-6 bg-ivory" />
-              <span className="block h-px w-4 self-end bg-gold" />
+              <span className="block h-0.5 w-6 rounded-full bg-paper" />
+              <span className="block h-0.5 w-4 self-end rounded-full bg-red" />
             </button>
           </div>
         </div>

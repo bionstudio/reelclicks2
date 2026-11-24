@@ -28,10 +28,10 @@
 |---|---|
 | Name | REELCLICKS.IN |
 | Tagline | Turning Moments Into Memories. |
-| Positioning | North Maharashtra's premium cinematic storytelling studio |
-| Theme | Luxury Cinematic |
-| Personality | Cinematic, luxurious, calm confidence, emotional, minimal. Never cheap, never cluttered. |
-| Audience | Premium wedding couples & families, brands, businesses, event organisers in Maharashtra |
+| Positioning | Creator-led film studio from North Maharashtra — the founder is an Instagram creator who also promotes businesses |
+| Theme | Modern Creator × Cinematic (redesigned Nov 2026 — the original gold "luxury" look was rejected as dated) |
+| Personality | Bold, energetic, cinematic, confident, warm. Never cheap, never cluttered. |
+| Audience | Businesses & brands wanting Instagram promotion / collab reels, wedding couples & families, event organisers in Maharashtra |
 
 ### Contact data (store in Sanity `siteSettings` + a fallback config file)
 
@@ -69,7 +69,7 @@ Weddings · Brand & Promotional · Corporate · Events · Travel & Lifestyle
 | CMS / Admin | Sanity (embedded Studio at `/studio`) |
 | Video | Bunny Stream or Mux (HLS adaptive streaming). Never self-host large MP4s. |
 | Images | `next/image` + Sanity image CDN (WebP/AVIF) |
-| Fonts | `next/font` — Cormorant Garamond (display), Manrope (body) |
+| Fonts | `next/font` — Bricolage Grotesque (display), Instrument Serif (italic accents), Manrope (body), Geist Mono (labels) |
 | Forms | react-hook-form + zod, Resend for email, leads saved in Sanity |
 | Spam protection | Honeypot + Cloudflare Turnstile |
 | Instagram | Behold.so widget (or Instagram Graph API) |
@@ -80,33 +80,39 @@ Weddings · Brand & Promotional · Corporate · Events · Travel & Lifestyle
 
 ## 3. DESIGN SYSTEM
 
-### Colors (Tailwind tokens)
+> Redesigned 2026-11-25 after client feedback ("not modern, colours bad, doesn't look like a creator's site").
+> Strict **3-colour** palette. Do not reintroduce gold/champagne or thin-serif-only headlines.
+
+### Colors (Tailwind tokens in `app/globals.css`)
 
 | Token | Hex | Use |
 |---|---|---|
-| `ink` | `#0A0A0A` | Matte black base |
-| `charcoal` | `#141414` | Surfaces / cards |
-| `gold` | `#C9A96E` | Champagne gold accent (max ~10% of any screen) |
-| `gold-soft` | `#E6D3A3` | Hover / highlight |
-| `ivory` | `#F3EEE6` | Primary text |
-| `muted` | `#8A857C` | Secondary text |
+| `ink` | `#0B0B0B` | Section **background** (swaps to cream inside `.theme-light`) |
+| `paper` | `#F4EFE6` | Section **foreground/text** (swaps to black inside `.theme-light`) |
+| `red` | `#FF3D2E` | "REC red" accent — buttons, REC dots, italic accent words, ticker |
+| `black` / `cream` | same hexes | Never swap — use on photos and on red |
+| `surface` | tint of base | Cards / media backgrounds |
+
+- Sections alternate: dark (default) · `.theme-light` (cream) · `.theme-red` (red with black type). `.theme-dark` forces dark tokens (e.g. text over photos).
+- Red small text on cream fails contrast — on cream use red only for large type, dots and buttons (black text on red).
 
 ### Typography
 
-- Display: **Cormorant Garamond**, light/italic for emotion, huge sizes (80–180px desktop, 44–64px mobile).
-- Body: **Manrope**.
-- Labels: uppercase, letter-spacing `0.3em`, small size, often gold.
+- Display: **Bricolage Grotesque**, semibold/bold, tight tracking (`-0.045em`), huge sizes.
+- `<em>` inside `font-display` automatically becomes **Instrument Serif** italic (usually red) — the emotional accent word.
+- Body: **Manrope**. Labels: **Geist Mono**, uppercase, small, with a red ● REC dot (`SectionLabel`).
 
 ### Visual language
 
-- Letterbox (2.39:1) framing, subtle film-grain overlay, soft vignette.
-- Thin 1px gold hairlines, generous negative space, 12-column grid, asymmetric editorial layouts.
+- Camera-viewfinder motifs: corner marks, blinking ● REC, running timecode, "4K · 24FPS".
+- Rounded cards (`rounded-2xl/3xl`), pill buttons and pill nav, red ticker marquee, giant footer wordmark.
+- Real-looking imagery always: demo stock photos live in `public/media/demo` (Pexels licence) until the client uploads real work.
 
 ### Motion
 
 - Slow cinematic easing (`expo.out`, `power3.out`).
 - Masked line-by-line text reveals, clip-path image/video reveals, parallax depth.
-- Magnetic buttons. Custom cursor: gold circle that becomes **"PLAY"** over videos and **"VIEW"** over projects (desktop only).
+- Magnetic buttons. Custom cursor: red circle that becomes **"PLAY"** over videos and **"VIEW"** over projects (desktop only).
 - Every animation has a lighter mobile version. Respect `prefers-reduced-motion`.
 
 ### Mobile

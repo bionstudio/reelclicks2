@@ -17,7 +17,7 @@ export function LeaderSpotlight({ member, index }: { member: TeamMember; index: 
       className="grid items-center gap-12 border-t border-hairline py-20 md:py-32 lg:grid-cols-12 lg:gap-16"
     >
       <div className={cn("lg:col-span-6", flip && "lg:order-2 lg:col-start-7")}>
-        <RevealMedia className="aspect-4/5 bg-charcoal" parallax from={flip ? "right" : "left"}>
+        <RevealMedia className="aspect-4/5 bg-surface" parallax from={flip ? "right" : "left"}>
           <div className="relative h-full w-full">
             <CoverMedia
               image={member.photo}
@@ -26,7 +26,7 @@ export function LeaderSpotlight({ member, index }: { member: TeamMember; index: 
               sizes="(min-width: 1024px) 50vw, 100vw"
             />
             {!member.photo && (
-              <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center font-display text-[160px] font-light text-ivory/10">
+              <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center font-display text-[160px] text-paper/10">
                 {member.name
                   .split(" ")
                   .map((n) => n[0])
@@ -38,19 +38,19 @@ export function LeaderSpotlight({ member, index }: { member: TeamMember; index: 
       </div>
 
       <div className={cn("lg:col-span-5", flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-8")}>
-        <p className="label flex items-center gap-4 text-gold">
-          <span aria-hidden="true" className="h-px w-10 bg-gold" />
+        <p className="label flex items-center gap-4 text-red">
+          <span aria-hidden="true" className="h-px w-10 bg-red" />
           {member.role}
         </p>
-        <RevealText as="h2" className="mt-6 font-display text-[48px] leading-[0.92] font-light text-ivory md:text-8xl">
+        <RevealText as="h2" className="mt-6 font-display text-[48px] leading-[0.92] text-paper md:text-8xl">
           <span id={`leader-${member._id}`}>{member.name}</span>
         </RevealText>
         {member.quote && (
-          <blockquote className="mt-8 border-l border-gold/50 pl-6 font-display text-2xl leading-snug text-gold-soft italic md:text-3xl">
+          <blockquote className="mt-8 border-l border-red/50 pl-6 font-display text-2xl leading-snug text-red italic md:text-3xl">
             “{member.quote}”
           </blockquote>
         )}
-        {member.bio && <p className="mt-8 max-w-lg leading-relaxed text-ivory/75">{member.bio}</p>}
+        {member.bio && <p className="mt-8 max-w-lg leading-relaxed text-paper/75">{member.bio}</p>}
 
         <div className="mt-10 flex flex-wrap gap-3">
           {member.phone && (

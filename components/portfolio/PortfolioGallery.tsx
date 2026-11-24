@@ -75,17 +75,17 @@ function GalleryView({
                     onClick={() => onSelect?.(f.slug)}
                     className={cn(
                       "label relative flex min-h-14 items-center gap-2 transition-colors duration-500",
-                      isActive ? "text-ivory" : "text-muted hover:text-ivory",
+                      isActive ? "text-paper" : "text-paper/60 hover:text-paper",
                     )}
                   >
                     {f.title}
-                    <sup className={cn("text-[0.55rem]", isActive ? "text-gold" : "text-muted/60")}>
+                    <sup className={cn("text-[0.55rem]", isActive ? "text-red" : "text-paper/40")}>
                       {String(count(f.slug)).padStart(2, "0")}
                     </sup>
                     {isActive && (
                       <motion.span
                         layoutId="filter-underline"
-                        className="absolute inset-x-0 -bottom-px h-px bg-gold"
+                        className="absolute inset-x-0 -bottom-px h-px bg-red"
                         transition={{ duration: 0.7, ease }}
                       />
                     )}
@@ -100,7 +100,7 @@ function GalleryView({
       <div className="pt-14 md:pt-20">
         <h2 className="sr-only">{active === "all" ? "All films" : filters.find((f) => f.slug === active)?.title}</h2>
         {shown.length === 0 ? (
-          <p className="py-32 text-center font-display text-3xl font-light text-muted italic">New films coming soon.</p>
+          <p className="py-32 text-center font-display text-3xl text-paper/60 italic">New films coming soon.</p>
         ) : (
           <motion.ul layout className="gap-6 sm:columns-2 md:gap-8 lg:columns-3">
             <AnimatePresence mode="popLayout" initial={false}>
@@ -128,7 +128,7 @@ function GalleryView({
 
         {shown.length < filtered.length && (
           <div className="mt-8 flex flex-col items-center gap-4">
-            <p className="label text-muted">
+            <p className="label text-paper/60">
               Showing {shown.length} of {filtered.length}
             </p>
             <Button variant="outline" onClick={() => setLimits((l) => ({ ...l, [active]: limit + PAGE }))}>

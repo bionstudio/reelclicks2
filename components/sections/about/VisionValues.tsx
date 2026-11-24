@@ -37,11 +37,11 @@ export function VisionValues({ vision, mission, values }: Props) {
             { label: "Our Vision", text: vision },
             { label: "Our Mission", text: mission },
           ].map((c) => (
-            <article key={c.label} className="relative border border-gold/30 p-8 md:p-14">
-              <span aria-hidden="true" className="absolute top-0 left-0 h-6 w-6 border-t border-l border-gold" />
-              <span aria-hidden="true" className="absolute right-0 bottom-0 h-6 w-6 border-r border-b border-gold" />
+            <article key={c.label} className="relative border border-red/30 p-8 md:p-14">
+              <span aria-hidden="true" className="absolute top-0 left-0 h-6 w-6 border-t border-l border-red" />
+              <span aria-hidden="true" className="absolute right-0 bottom-0 h-6 w-6 border-r border-b border-red" />
               <SectionLabel as="h2">{c.label}</SectionLabel>
-              <p className="mt-8 font-display text-3xl leading-[1.15] font-light text-ivory md:text-[42px]">{c.text}</p>
+              <p className="mt-8 font-display text-3xl leading-[1.15] text-paper md:text-[42px]">{c.text}</p>
             </article>
           ))}
         </div>
@@ -56,7 +56,7 @@ export function VisionValues({ vision, mission, values }: Props) {
               >
                 <svg
                   viewBox="0 0 48 48"
-                  className="h-12 w-12 text-gold"
+                  className="h-12 w-12 text-red"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1"
@@ -66,8 +66,8 @@ export function VisionValues({ vision, mission, values }: Props) {
                 >
                   {icons[i % icons.length]}
                 </svg>
-                <h3 className="mt-8 font-display text-3xl font-light text-ivory">{v.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{v.text}</p>
+                <h3 className="mt-8 font-display text-3xl text-paper">{v.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-paper/60">{v.text}</p>
               </li>
             ))}
           </ul>

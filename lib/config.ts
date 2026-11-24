@@ -45,6 +45,7 @@ export const siteConfig = {
   whatsappMessages: {
     general: "Hi REELCLICKS, I'd like to enquire about a shoot.",
     availability: "Hi, I want to check availability for my date: ",
+    promote: "Hi REELCLICKS, I want to promote my business with a reel / collab.",
     service: (serviceName: string) =>
       `Hi REELCLICKS, I'm interested in ${serviceName}.`,
   },
@@ -52,7 +53,22 @@ export const siteConfig = {
 
 /** Home page copy fallbacks (editable in Sanity → Pages → Home where noted). */
 export const homeContent = {
-  heroLabel: "Cinematic Storytelling Studio — Maharashtra",
+  heroLabel: "Creator & Film Studio — Maharashtra",
+  heroIntro:
+    "Wedding films, brand reels and Instagram promotions — shot, edited and posted by the creator team behind @reel_clicks.in.",
+  ticker: ["Wedding Films", "Brand Reels", "Instagram Collabs", "Business Promotions", "Event Coverage", "Travel Reels", "Corporate Films"],
+  brands: {
+    label: "For Brands & Businesses",
+    title: "Your business,",
+    titleEm: "on everyone's feed.",
+    text:
+      "We're not just behind the camera — we're creators with an engaged Instagram audience across Maharashtra. We plan, shoot and post reels that put cafés, stores, launches and local brands in front of the people who matter.",
+    offers: [
+      { title: "Collab Reels", text: "Your brand featured on @reel_clicks.in — scripted, shot, edited and posted by us." },
+      { title: "Promotion Shoots", text: "Ad films and launch reels for cafés, showrooms, salons, gyms and real estate." },
+      { title: "Monthly Content", text: "A ready-to-post reels calendar so your page never goes quiet." },
+    ],
+  },
   manifesto:
     "We don't just record events. We craft films that make you feel everything again — every glance, every laugh, every heartbeat.",
   finalCtaTitle: "Your story deserves a film.",

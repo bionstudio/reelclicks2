@@ -83,12 +83,12 @@ function LightboxDialog({ onClose, onPrev, onNext, label, children, footer }: Li
     >
       {/* Top letterbox bar */}
       <div className="flex h-16 shrink-0 items-center justify-between px-4 md:h-20 md:px-8">
-        <p className="label truncate pr-4 text-muted">{label}</p>
+        <p className="label truncate pr-4 text-paper/60">{label}</p>
         <button
           ref={closeRef}
           type="button"
           onClick={onClose}
-          className="label flex h-11 min-w-11 items-center justify-center gap-3 text-ivory hover:text-gold"
+          className="label flex h-11 min-w-11 items-center justify-center gap-3 text-paper hover:text-red"
           aria-label="Close"
         >
           <span className="hidden md:inline">Close</span>
@@ -127,7 +127,7 @@ function NavButton({ side, onClick, label }: { side: "left" | "right"; onClick: 
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`absolute top-1/2 ${side === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold/40 bg-ink/60 text-ivory backdrop-blur transition-colors hover:border-gold hover:text-gold`}
+      className={`absolute top-1/2 ${side === "left" ? "left-2 md:left-6" : "right-2 md:right-6"} flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-red/40 bg-ink/60 text-paper backdrop-blur transition-colors hover:border-red hover:text-red`}
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path

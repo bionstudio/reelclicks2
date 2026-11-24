@@ -34,16 +34,16 @@ export default async function ContactPage() {
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] font-light text-ivory md:text-[110px] xl:text-[150px]"
+          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] text-paper md:text-[110px] xl:text-[150px]"
         >
           Let&apos;s Create
           <br />
-          <em className="text-gold-soft">Something Timeless.</em>
+          <em className="text-red">Something Timeless.</em>
         </RevealText>
-        <p className="mt-10 flex items-center gap-3 text-lg text-muted">
+        <p className="mt-10 flex items-center gap-3 text-lg text-paper/60">
           <span aria-hidden="true" className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-60" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red" />
           </span>
           We reply within 2 hours.
         </p>
@@ -59,21 +59,21 @@ export default async function ContactPage() {
         <div className="container-cinema grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionLabel>Send An Enquiry</SectionLabel>
-            <h2 id="enquiry-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-6xl">
-              Tell us about <em className="text-gold-soft">your story.</em>
+            <h2 id="enquiry-title" className="mt-6 font-display text-[44px] leading-[0.95] md:text-6xl">
+              Tell us about <em className="text-red">your story.</em>
             </h2>
             <dl className="mt-12 space-y-8 border-t border-hairline pt-8">
               <div>
-                <dt className="label text-gold">Business hours</dt>
-                <dd className="mt-2 text-ivory">{settings.businessHours}</dd>
+                <dt className="label text-red">Business hours</dt>
+                <dd className="mt-2 text-paper">{settings.businessHours}</dd>
               </div>
               <div>
-                <dt className="label text-gold">Response time</dt>
-                <dd className="mt-2 text-ivory">We reply within 2 hours</dd>
+                <dt className="label text-red">Response time</dt>
+                <dd className="mt-2 text-paper">We reply within 2 hours</dd>
               </div>
               <div>
-                <dt className="label text-gold">Booking</dt>
-                <dd className="mt-2 text-muted">Dates are confirmed on a first-come basis once the advance is received.</dd>
+                <dt className="label text-red">Booking</dt>
+                <dd className="mt-2 text-paper/60">Dates are confirmed on a first-come basis once the advance is received.</dd>
               </div>
             </dl>
           </div>
@@ -84,29 +84,29 @@ export default async function ContactPage() {
       </section>
 
       {/* Service areas + map */}
-      <section className="border-t border-hairline py-24 md:py-36" aria-labelledby="areas-title">
+      <section className="theme-light py-24 md:py-36" aria-labelledby="areas-title">
         <div className="container-cinema grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionLabel>Service Areas</SectionLabel>
-            <h2 id="areas-title" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-6xl">
-              Available <em className="text-gold-soft">all over Maharashtra.</em>
+            <h2 id="areas-title" className="mt-6 font-display text-[44px] leading-[0.95] md:text-6xl">
+              Available <em className="text-red">all over Maharashtra.</em>
             </h2>
             <ul className="mt-10 flex flex-wrap gap-3">
               {settings.locations.map((l) => (
-                <li key={l} className="label rounded-full border border-gold/40 px-4 py-2.5 text-ivory">
+                <li key={l} className="rounded-full border border-hairline px-4 py-2.5 text-sm font-semibold text-paper">
                   {l}
                 </li>
               ))}
-              <li className="label rounded-full bg-gold px-4 py-2.5 text-ink">{settings.serviceArea}</li>
+              <li className="rounded-full bg-red px-4 py-2.5 text-sm font-semibold text-black">{settings.serviceArea}</li>
             </ul>
           </div>
-          <div className="relative aspect-4/3 overflow-hidden border border-hairline lg:col-span-7">
+          <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-hairline lg:col-span-7">
             <iframe
               title={`Map of ${settings.locations.join(", ")}, Maharashtra`}
               src={`https://www.google.com/maps?q=${mapQuery}&z=8&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full filter-[grayscale(1)_invert(0.92)_contrast(0.9)_brightness(0.9)]"
+              className="absolute inset-0 h-full w-full filter-[grayscale(1)_contrast(1.05)]"
             />
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_rgba(10,10,10,0.8)]" />
           </div>

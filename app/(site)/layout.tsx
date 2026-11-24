@@ -16,7 +16,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
     <>
       <a
         href="#main"
-        className="label sr-only z-120 bg-gold px-4 py-3 text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        className="label sr-only z-120 bg-red px-4 py-3 text-black focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
       >
         Skip to content
       </a>

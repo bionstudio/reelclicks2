@@ -67,27 +67,27 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
 
       {/* Hero */}
       <section className="container-cinema pt-36 pb-14 md:pt-48 md:pb-20">
-        <nav aria-label="Breadcrumb" className="label flex items-center gap-3 text-muted">
-          <TransitionLink href="/portfolio" className="min-h-11 py-3 hover:text-gold">
+        <nav aria-label="Breadcrumb" className="label flex items-center gap-3 text-paper/60">
+          <TransitionLink href="/portfolio" className="min-h-11 py-3 hover:text-red">
             Portfolio
           </TransitionLink>
           <span aria-hidden="true">/</span>
-          <TransitionLink href={`/portfolio?category=${item.category.slug}`} className="min-h-11 py-3 hover:text-gold">
+          <TransitionLink href={`/portfolio?category=${item.category.slug}`} className="min-h-11 py-3 hover:text-red">
             {item.category.title}
           </TransitionLink>
         </nav>
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-6 max-w-6xl font-display text-[52px] leading-[0.92] font-light text-ivory md:text-[110px] xl:text-[140px]"
+          className="mt-6 max-w-6xl font-display text-[52px] leading-[0.92] text-paper md:text-[110px] xl:text-[140px]"
         >
           {item.title}
         </RevealText>
         <dl className="mt-12 grid grid-cols-2 gap-6 border-t border-hairline pt-8 md:grid-cols-4">
           {meta.map(([k, v]) => (
             <div key={k}>
-              <dt className="label text-gold">{k}</dt>
-              <dd className="mt-2 text-ivory/90">{v}</dd>
+              <dt className="label text-red">{k}</dt>
+              <dd className="mt-2 text-paper/90">{v}</dd>
             </div>
           ))}
         </dl>
@@ -100,7 +100,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
             <div className="relative h-full w-full" data-cursor="play">
               <VideoPlayer title={item.title} src={src} poster={poster} controls lazy fit="cover" />
               {!src && (
-                <p className="label pointer-events-none absolute inset-x-0 bottom-6 text-center text-muted">Film coming soon</p>
+                <p className="label pointer-events-none absolute inset-x-0 bottom-6 text-center text-paper/60">Film coming soon</p>
               )}
             </div>
           </RevealMedia>
@@ -114,7 +114,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
             <span id="brief-title">The Brief</span>
           </SectionLabel>
         </div>
-        <div className="space-y-6 font-display text-2xl leading-[1.35] font-light text-ivory/90 md:text-[34px] lg:col-span-8">
+        <div className="space-y-6 font-display text-2xl leading-[1.35] text-paper/90 md:text-[34px] lg:col-span-8">
           {item.brief?.length ? (
             <PortableText value={item.brief} />
           ) : (
@@ -163,15 +163,15 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
       {item.testimonial && (
         <section className="border-t border-hairline py-24 md:py-36" aria-label="Client testimonial">
           <figure className="container-cinema max-w-5xl text-center">
-            <p aria-hidden="true" className="font-display text-8xl leading-none text-gold/40">
+            <p aria-hidden="true" className="font-display text-8xl leading-none text-red/40">
               &ldquo;
             </p>
-            <blockquote className="font-display text-3xl leading-[1.2] font-light text-ivory italic md:text-5xl">
+            <blockquote className="font-display text-3xl leading-[1.2] text-paper italic md:text-5xl">
               {item.testimonial.quote}
             </blockquote>
             <figcaption className="mt-8">
-              <span className="block text-ivory">{item.testimonial.name}</span>
-              <span className="label mt-2 block text-muted">
+              <span className="block text-paper">{item.testimonial.name}</span>
+              <span className="label mt-2 block text-paper/60">
                 {[item.testimonial.eventType, item.testimonial.city].filter(Boolean).join(" · ")}
               </span>
             </figcaption>
@@ -184,8 +184,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
         <div className="container-cinema flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
             <SectionLabel>Love this film?</SectionLabel>
-            <p className="mt-6 max-w-2xl font-display text-[40px] leading-[0.95] font-light md:text-7xl">
-              Let&apos;s create <em className="text-gold-soft">yours.</em>
+            <p className="mt-6 max-w-2xl font-display text-[40px] leading-[0.95] md:text-7xl">
+              Let&apos;s create <em className="text-red">yours.</em>
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -220,11 +220,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/portfolio/[s
           <div aria-hidden="true" className="absolute inset-0 bg-linear-to-r from-ink via-ink/70 to-transparent" />
           <div className="container-cinema relative flex items-end justify-between gap-6 py-24 md:py-36">
             <div>
-              <p className="label text-gold">Next film</p>
-              <p className="mt-4 font-display text-[44px] leading-[0.95] font-light text-ivory md:text-8xl">{next.title}</p>
-              <p className="label mt-4 text-muted">{next.category.title}</p>
+              <p className="label text-red">Next film</p>
+              <p className="mt-4 font-display text-[44px] leading-[0.95] text-paper md:text-8xl">{next.title}</p>
+              <p className="label mt-4 text-paper/60">{next.category.title}</p>
             </div>
-            <ArrowIcon className="h-10 w-10 shrink-0 text-gold transition-transform duration-700 group-hover:translate-x-2" />
+            <ArrowIcon className="h-10 w-10 shrink-0 text-red transition-transform duration-700 group-hover:translate-x-2" />
           </div>
         </TransitionLink>
       )}

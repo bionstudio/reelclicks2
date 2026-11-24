@@ -29,13 +29,13 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
               >
                 <span
                   className={cn(
-                    "font-display text-2xl font-light transition-colors md:text-3xl",
-                    isOpen ? "text-gold-soft" : "text-ivory group-hover:text-gold-soft",
+                    "font-display text-2xl transition-colors md:text-3xl",
+                    isOpen ? "text-red" : "text-paper group-hover:text-red",
                   )}
                 >
                   {f.question}
                 </span>
-                <span aria-hidden="true" className="relative h-4 w-4 shrink-0 text-gold">
+                <span aria-hidden="true" className="relative h-4 w-4 shrink-0 text-red">
                   <span className="absolute top-1/2 left-0 h-px w-4 bg-current" />
                   <span
                     className={cn(
@@ -58,7 +58,7 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-3xl pb-8 leading-relaxed text-muted">{f.answer}</p>
+                  <p className="max-w-3xl pb-8 leading-relaxed text-paper/60">{f.answer}</p>
                 </motion.div>
               )}
             </AnimatePresence>

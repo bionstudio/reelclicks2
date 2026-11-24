@@ -12,12 +12,12 @@ import { PortfolioLightbox } from "@/components/portfolio/PortfolioLightbox";
 
 /** Asymmetric editorial placement for up to 6 items (desktop). Mobile stacks. */
 const LAYOUT = [
-  { wide: "md:col-span-8", tall: "md:col-span-4" },
-  { wide: "md:col-span-6 md:col-start-7 md:mt-40", tall: "md:col-span-3 md:col-start-10 md:mt-40" },
-  { wide: "md:col-span-7 md:col-start-1", tall: "md:col-span-4 md:col-start-2" },
-  { wide: "md:col-span-6 md:col-start-7 md:mt-24", tall: "md:col-span-3 md:col-start-8 md:mt-24" },
-  { wide: "md:col-span-6 md:col-start-2", tall: "md:col-span-4 md:col-start-2" },
-  { wide: "md:col-span-5 md:col-start-8 md:mt-32", tall: "md:col-span-3 md:col-start-9 md:mt-32" },
+  { wide: "lg:col-span-8", tall: "lg:col-span-4" },
+  { wide: "lg:col-span-6 lg:col-start-7 lg:mt-40", tall: "lg:col-span-3 lg:col-start-10 lg:mt-40" },
+  { wide: "lg:col-span-7 lg:col-start-1", tall: "lg:col-span-4 lg:col-start-2" },
+  { wide: "lg:col-span-6 lg:col-start-7 lg:mt-24", tall: "lg:col-span-3 lg:col-start-8 lg:mt-24" },
+  { wide: "lg:col-span-6 lg:col-start-2", tall: "lg:col-span-4 lg:col-start-2" },
+  { wide: "lg:col-span-5 lg:col-start-8 lg:mt-32", tall: "lg:col-span-3 lg:col-start-9 lg:mt-32" },
 ];
 
 export function FeaturedWork({ items }: { items: PortfolioItem[] }) {
@@ -28,15 +28,15 @@ export function FeaturedWork({ items }: { items: PortfolioItem[] }) {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <SectionLabel>Featured Work</SectionLabel>
-          <RevealText as="h2" className="mt-6 font-display text-[44px] leading-[0.95] font-light md:text-7xl xl:text-8xl">
+          <RevealText as="h2" className="mt-6 font-display text-[44px] leading-[0.92] md:text-7xl xl:text-8xl">
             <span id="featured-title">
-              Films that feel <em className="text-gold-soft">like memories.</em>
+              Films that feel <em className="text-red">like memories.</em>
             </span>
           </RevealText>
         </div>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 md:mt-24 md:grid-cols-12 md:gap-y-24">
+      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 md:mt-24 md:grid-cols-2 lg:grid-cols-12 lg:gap-y-24">
         {items.slice(0, 6).map((item, i) => {
           const slot = LAYOUT[i % LAYOUT.length];
           return (
@@ -49,7 +49,7 @@ export function FeaturedWork({ items }: { items: PortfolioItem[] }) {
                 item={item}
                 index={i}
                 onOpen={setOpen}
-                sizes={item.aspectRatio === "9:16" ? "(min-width: 768px) 30vw, 100vw" : "(min-width: 768px) 60vw, 100vw"}
+                sizes={item.aspectRatio === "9:16" ? "(min-width: 1024px) 30vw, (min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 60vw, (min-width: 768px) 50vw, 100vw"}
               />
             </RevealMedia>
           );

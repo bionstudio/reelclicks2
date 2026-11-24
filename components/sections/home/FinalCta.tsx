@@ -5,19 +5,16 @@ import { RevealText } from "@/components/ui/RevealText";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/Icons";
 
-/** Closing call to action — letterboxed, cinematic. */
+/** Closing call to action on REC red. */
 export function FinalCta({ title, whatsapp }: { title: string; whatsapp: string }) {
   return (
-    <section className="cv-auto relative overflow-hidden" aria-labelledby="final-cta-title">
-      <div aria-hidden="true" className="placeholder-media vignette absolute inset-0" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[8vh] bg-ink" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[8vh] bg-ink" />
+    <section className="theme-red cv-auto relative overflow-hidden" aria-labelledby="final-cta-title">
 
-      <div className="container-cinema relative flex min-h-[80svh] flex-col items-center justify-center py-40 text-center">
+      <div className="container-cinema relative flex min-h-[70svh] flex-col items-center justify-center py-32 text-center md:py-40">
         <SectionLabel line={false}>Now Booking · All Over Maharashtra</SectionLabel>
         <RevealText
           as="h2"
-          className="mt-8 max-w-5xl font-display text-[48px] leading-[0.95] font-light md:text-[110px] xl:text-[150px]"
+          className="mt-8 max-w-6xl font-display text-[14vw] leading-[0.88] font-bold sm:text-[80px] md:text-[120px] xl:text-[168px]"
         >
           <span id="final-cta-title">{title}</span>
         </RevealText>
@@ -31,7 +28,7 @@ export function FinalCta({ title, whatsapp }: { title: string; whatsapp: string 
             <WhatsAppIcon className="h-4 w-4" />
             Check Date Availability
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href="/contact" variant="outline" size="lg" className="border-black/40">
             Send Enquiry
           </Button>
         </div>

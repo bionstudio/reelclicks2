@@ -57,7 +57,7 @@ export function ServiceIndex({ items, variant }: { items: Item[]; variant: "side
                 aria-current={active === item.slug ? "true" : undefined}
                 className={cn(
                   "label flex min-h-11 items-center rounded-full border px-4 transition-colors",
-                  active === item.slug ? "border-gold bg-gold text-ink" : "border-gold/30 text-ivory/80",
+                  active === item.slug ? "border-red bg-red text-black" : "border-red/30 text-paper/80",
                 )}
               >
                 {String(i + 1).padStart(2, "0")} · {item.title.replace(/^Professional /, "")}
@@ -71,7 +71,7 @@ export function ServiceIndex({ items, variant }: { items: Item[]; variant: "side
 
   return (
     <nav aria-label="Services" className="sticky top-32">
-      <p className="label text-gold">Index</p>
+      <p className="label text-red">Index</p>
       <ol className="mt-6 space-y-1 border-l border-hairline">
         {items.map((item, i) => {
           const isActive = active === item.slug;
@@ -83,17 +83,17 @@ export function ServiceIndex({ items, variant }: { items: Item[]; variant: "side
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "relative flex min-h-11 items-center gap-4 py-1.5 pl-5 text-sm transition-colors duration-500",
-                  isActive ? "text-ivory" : "text-muted hover:text-ivory",
+                  isActive ? "text-paper" : "text-paper/60 hover:text-paper",
                 )}
               >
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "absolute top-0 -left-px h-full w-px origin-top bg-gold transition-transform duration-700 ease-expo-out",
+                    "absolute top-0 -left-px h-full w-px origin-top bg-red transition-transform duration-700 ease-expo-out",
                     isActive ? "scale-y-100" : "scale-y-0",
                   )}
                 />
-                <span className={cn("label w-6", isActive ? "text-gold" : "text-muted/60")}>
+                <span className={cn("label w-6", isActive ? "text-red" : "text-paper/40")}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {item.title}

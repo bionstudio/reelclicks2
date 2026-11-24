@@ -12,10 +12,28 @@ import type {
   SiteSettings,
   Stat,
   TeamMember,
+  SanityImage,
   Testimonial,
 } from "./types";
 
 const { founder, ceo } = siteConfig.people;
+
+/**
+ * Free stock photos (Pexels licence) in /public/media/demo — placeholders so the
+ * site looks real before the client's own work is uploaded in Sanity.
+ */
+export const demoImage = (name: string, alt = ""): SanityImage => ({ src: `/media/demo/${name}.jpg`, alt });
+
+export const demoBts: SanityImage[] = [
+  demoImage("bts-crew", "Film crew setting up a shot"),
+  demoImage("bts-monitor", "Camera monitor during a shoot"),
+  demoImage("creator-ringlight", "Creator filming with a ring light"),
+  demoImage("bts-studio", "Studio shoot with lighting"),
+  demoImage("bts-operator", "Camera operator on set"),
+  demoImage("brand-food", "Filming food content on a gimbal"),
+  demoImage("hero-alt", "Cinema camera operator"),
+  demoImage("creator-phone", "Phone recording a vertical reel"),
+];
 
 export const demoSiteSettings: SiteSettings = {
   tagline: siteConfig.tagline,
@@ -30,7 +48,7 @@ export const demoSiteSettings: SiteSettings = {
   logo: null,
   showreel: null,
   showreelMobile: null,
-  showreelPoster: null,
+  showreelPoster: demoImage("hero", "Cinematographer filming with a cinema camera"),
 };
 
 export const demoCategories: Category[] = portfolioCategories.map((c) => ({
@@ -38,6 +56,30 @@ export const demoCategories: Category[] = portfolioCategories.map((c) => ({
   title: c.title,
   slug: c.slug,
 }));
+
+const SERVICE_IMAGES: Record<string, string> = {
+  "wedding-shoots": "wedding-couple-garden",
+  "wedding-cinematic-reels": "wedding-couple",
+  "brand-promotional-shoots": "brand-cafe",
+  "corporate-business-shoots": "corporate-team",
+  "business-meeting-shoots": "corporate-meeting",
+  "event-shoots-coverage": "event-stage",
+  "travel-lifestyle-reels": "travel-road",
+  "social-media-content": "creator-ringlight",
+};
+
+const PORTFOLIO_IMAGES: Record<string, string> = {
+  "vineyard-vows": "wedding-garlands",
+  "haldi-in-gold": "wedding-haldi",
+  "the-quiet-vidaai": "wedding-veil",
+  "monsoon-sangeet": "wedding-portrait",
+  "the-roastery": "brand-food",
+  "threads-of-maharashtra": "brand-studio",
+  "built-to-last": "corporate-office",
+  "annual-dealers-meet": "event-crowd",
+  "festival-of-lights": "event-red",
+  "sahyadri-sunrise": "travel-ghats",
+};
 
 const svc = (
   slug: string,
@@ -58,7 +100,7 @@ const svc = (
   description,
   included,
   idealFor,
-  thumbnail: null,
+  thumbnail: SERVICE_IMAGES[slug] ? demoImage(SERVICE_IMAGES[slug], title) : null,
   previewVideo: null,
   // Packages shown for weddings only, as a design example. Prices stay empty
   // ("Get Quote") until the client supplies real ones.
@@ -183,7 +225,7 @@ const item = (
     date,
     client,
     story,
-    thumbnail: null,
+    thumbnail: PORTFOLIO_IMAGES[slug] ? demoImage(PORTFOLIO_IMAGES[slug], title) : null,
     video: null,
     previewVideo: null,
   };

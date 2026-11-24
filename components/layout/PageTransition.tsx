@@ -22,7 +22,7 @@ const TransitionContext = createContext<TransitionContextValue>({
 export const usePageTransition = () => useContext(TransitionContext);
 
 /**
- * Black curtain wipe with a gold hairline between routes.
+ * Black curtain wipe with a red edge between routes.
  * Cover → router.push → reveal once the new pathname renders.
  */
 export function TransitionProvider({ children }: { children: ReactNode }) {
@@ -92,11 +92,10 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       <div
         ref={curtainRef}
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-95 bg-ink"
+        className="pointer-events-none fixed inset-0 z-95 bg-black"
         style={{ transform: "translateY(100%)", visibility: "hidden" }}
       >
-        <span className="absolute inset-x-0 top-0 h-px bg-gold" />
-        <span className="absolute inset-x-0 bottom-0 h-px bg-gold/60" />
+        <span className="absolute inset-x-0 top-0 h-1.5 bg-red" />
       </div>
     </TransitionContext.Provider>
   );

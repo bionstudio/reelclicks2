@@ -5,13 +5,13 @@ import { PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
 /** Sticky bottom bar on mobile: WhatsApp + Call. */
 export function MobileBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-hairline bg-ink/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+    <div className="theme-dark fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-hairline bg-black/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
       <a
         href={whatsappLink()}
         target="_blank"
         rel="noopener noreferrer"
         data-track="whatsapp_click"
-        className="label flex h-14 items-center justify-center gap-3 bg-gold text-ink"
+        className="flex h-14 items-center justify-center gap-3 bg-red text-sm font-semibold text-black"
       >
         <WhatsAppIcon className="h-5 w-5" />
         WhatsApp
@@ -19,9 +19,9 @@ export function MobileBar() {
       <a
         href={telLink(siteConfig.people.founder.tel)}
         data-track="call_click"
-        className="label flex h-14 items-center justify-center gap-3 text-ivory"
+        className="flex h-14 items-center justify-center gap-3 text-sm font-semibold text-paper"
       >
-        <PhoneIcon className="h-5 w-5 text-gold" />
+        <PhoneIcon className="h-5 w-5 text-red" />
         Call Now
       </a>
     </div>

@@ -31,13 +31,13 @@ export default async function PortfolioPage() {
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] font-light text-ivory md:text-[110px] xl:text-[150px]"
+          className="mt-8 max-w-6xl font-display text-[52px] leading-[0.92] text-paper md:text-[110px] xl:text-[150px]"
         >
           Films that feel
           <br />
-          <em className="text-gold-soft">like memories.</em>
+          <em className="text-red">like memories.</em>
         </RevealText>
-        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted">
+        <p className="mt-10 max-w-xl text-lg leading-relaxed text-paper/60">
           Weddings, brands, events and journeys — a few of the stories we&apos;ve had the honour of telling.
         </p>
       </section>

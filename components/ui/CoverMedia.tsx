@@ -3,13 +3,13 @@ import { urlForImage } from "@/lib/sanity/image";
 import type { SanityImage } from "@/lib/sanity/types";
 import { cn } from "@/lib/utils";
 
-/** Cinematic gradient placeholders, varied so a grid never looks repetitive. */
+/** Neutral gradient placeholders, varied so a grid never looks repetitive. */
 const VARIANTS = [
-  "radial-gradient(120% 80% at 25% 15%, rgb(201 169 110 / .22), transparent 60%), linear-gradient(160deg, #1d1a16, #0b0a09 60%, #050505)",
-  "radial-gradient(90% 90% at 80% 20%, rgb(230 211 163 / .14), transparent 55%), linear-gradient(200deg, #17171a, #0b0b0d 55%, #050505)",
-  "radial-gradient(100% 70% at 50% 100%, rgb(201 169 110 / .2), transparent 60%), linear-gradient(180deg, #0c0c0c, #16130f)",
-  "radial-gradient(80% 80% at 15% 85%, rgb(160 120 80 / .22), transparent 60%), linear-gradient(140deg, #141210, #070707)",
-  "radial-gradient(110% 60% at 70% 40%, rgb(243 238 230 / .08), transparent 60%), linear-gradient(170deg, #1a1714, #080808)",
+  "radial-gradient(90% 70% at 80% 90%, rgb(255 61 46 / .22), transparent 60%), linear-gradient(160deg, #222221, #0e0e0e 60%, #050505)",
+  "radial-gradient(80% 80% at 20% 20%, rgb(244 239 230 / .10), transparent 55%), linear-gradient(200deg, #1b1b1a, #0b0b0b 55%, #050505)",
+  "radial-gradient(100% 70% at 50% 100%, rgb(255 61 46 / .16), transparent 60%), linear-gradient(180deg, #0c0c0c, #1a1918)",
+  "linear-gradient(140deg, #2a2927, #0b0b0b)",
+  "radial-gradient(110% 60% at 70% 40%, rgb(244 239 230 / .08), transparent 60%), linear-gradient(170deg, #1d1d1c, #080808)",
 ];
 
 type Props = {

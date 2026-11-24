@@ -7,7 +7,7 @@ import { prefersReducedMotion } from "@/lib/hooks";
 import { onNearViewport } from "@/lib/near";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-/** Large serif paragraph whose words fill from muted to ivory as you scroll. */
+/** Large paragraph on cream whose words fill from faint to solid black as you scroll. */
 export function Manifesto({ text }: { text: string }) {
   const root = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
@@ -29,9 +29,9 @@ export function Manifesto({ text }: { text: string }) {
             onSplit(self) {
               return gsap.fromTo(
                 self.words,
-                { color: "#77726a" },
+                { color: "rgba(11, 11, 11, 0.16)" },
                 {
-                  color: "#F3EEE6",
+                  color: "#0B0B0B",
                   ease: "none",
                   stagger: 0.1,
                   scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true },
@@ -51,12 +51,12 @@ export function Manifesto({ text }: { text: string }) {
   );
 
   return (
-    <section ref={root} className="container-cinema py-32 md:py-56" aria-label="Our manifesto">
-      <div className="grid gap-10 md:grid-cols-12">
+    <section ref={root} className="theme-light" aria-label="Our manifesto">
+      <div className="container-cinema grid gap-10 pt-28 pb-20 md:grid-cols-12 md:pt-44 md:pb-28">
         <SectionLabel className="md:col-span-3 md:pt-4">Our Philosophy</SectionLabel>
         <p
           ref={textRef}
-          className="font-display text-[34px] leading-[1.12] font-light text-ivory sm:text-5xl md:col-span-9 md:text-6xl xl:text-[84px]"
+          className="font-display text-[34px] leading-[1.04] font-medium text-paper sm:text-5xl md:col-span-9 md:text-6xl xl:text-[80px]"
         >
           {text}
         </p>

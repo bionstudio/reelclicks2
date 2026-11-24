@@ -43,6 +43,19 @@ async function fetchOr<T>(
   }
 }
 
+/**
+ * Until the client uploads real thumbnails, CMS items without one borrow the
+ * matching demo stock photo (by slug) so the site never shows empty frames.
+ */
+function withDemoThumbs<T extends { slug: string; thumbnail?: PortfolioItem["thumbnail"] }>(
+  items: T[],
+  demoItems: Array<{ slug: string; thumbnail?: PortfolioItem["thumbnail"] }>,
+): T[] {
+  return items.map((it) =>
+    it.thumbnail?.asset ? it : { ...it, thumbnail: demoItems.find((d) => d.slug === it.slug)?.thumbnail ?? it.thumbnail },
+  );
+}
+
 function tag(...types: string[]) {
   cacheLife("hours");
   cacheTag(SANITY_TAG, ...types);
@@ -84,22 +97,23 @@ export async function getCategories(): Promise<Category[]> {
 export async function getServices(): Promise<Service[]> {
   "use cache";
   tag("service", "category");
-  return fetchOr(q.servicesQuery, demo.demoServices);
+  return withDemoThumbs(await fetchOr(q.servicesQuery, demo.demoServices), demo.demoServices);
 }
 
 export async function getPortfolio(): Promise<PortfolioItem[]> {
   "use cache";
   tag("portfolioItem", "category");
-  return fetchOr(q.portfolioQuery, demo.demoPortfolio);
+  return withDemoThumbs(await fetchOr(q.portfolioQuery, demo.demoPortfolio), demo.demoPortfolio);
 }
 
 export async function getFeaturedPortfolio(): Promise<PortfolioItem[]> {
   "use cache";
   tag("portfolioItem", "category");
-  return fetchOr(
+  const items = await fetchOr(
     q.featuredPortfolioQuery,
     demo.demoPortfolio.filter((p) => p.featured).slice(0, 6),
   );
+  return withDemoThumbs(items, demo.demoPortfolio);
 }
 
 /** Demo case-study content is used only while Sanity has no portfolio items at all. */
@@ -112,7 +126,7 @@ export async function getPortfolioItem(slug: string): Promise<PortfolioDetail | 
   tag("portfolioItem", "category", "testimonial");
   if (isSanityConfigured) {
     const data = await fetchOr<PortfolioDetail | null>(q.portfolioItemQuery, null, { slug });
-    if (data) return data;
+    if (data) return withDemoThumbs([data], demo.demoPortfolio)[0];
     if (await cmsHasPortfolio()) return null;
   }
   const item = demo.demoPortfolio.find((p) => p.slug === slug);

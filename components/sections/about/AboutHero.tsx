@@ -13,13 +13,13 @@ export function AboutHero({ intro, image }: { intro: string; image?: SanityImage
         <RevealText
           as="h1"
           trigger="mount"
-          className="mt-8 font-display text-[56px] leading-[0.9] font-light text-ivory md:text-[120px] xl:text-[164px]"
+          className="mt-8 font-display text-[56px] leading-[0.9] text-paper md:text-[120px] xl:text-[164px]"
         >
           We Are
           <br />
-          <em className="text-gold-soft">Storytellers.</em>
+          <em className="text-red">Storytellers.</em>
         </RevealText>
-        <p className="mt-10 max-w-md text-lg leading-relaxed text-muted">{intro}</p>
+        <p className="mt-10 max-w-md text-lg leading-relaxed text-paper/60">{intro}</p>
       </div>
 
       <RevealMedia className="aspect-4/5 lg:col-span-5 lg:col-start-8" delay={0.3}>
@@ -33,7 +33,7 @@ export function AboutHero({ intro, image }: { intro: string; image?: SanityImage
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
           </div>
-          <span className="label absolute bottom-5 left-5 text-ivory/70">Behind the lens</span>
+          <span className="label absolute bottom-5 left-5 text-paper/70">Behind the lens</span>
         </div>
       </RevealMedia>
     </section>

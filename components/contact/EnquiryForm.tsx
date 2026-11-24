@@ -186,7 +186,7 @@ function Form({ whatsapp, initialService }: { whatsapp: string; initialService: 
       </div>
 
       <div className="flex flex-col gap-5 md:col-span-2 md:flex-row md:items-center md:justify-between">
-        <p className="max-w-sm text-xs leading-relaxed text-muted">
+        <p className="max-w-sm text-xs leading-relaxed text-paper/60">
           We&apos;ll only use your details to reply to this enquiry by phone, WhatsApp or email.
         </p>
         <Button type="submit" size="lg" disabled={isSubmitting}>
@@ -215,7 +215,7 @@ function Form({ whatsapp, initialService }: { whatsapp: string; initialService: 
 }
 
 const inputCls =
-  "peer block w-full border-0 border-b border-ivory/20 bg-transparent px-0 pt-7 pb-3 text-base text-ivory transition-colors focus:border-ivory/20 focus:ring-0 focus-visible:outline-none aria-[invalid=true]:border-[#F2A097]/70";
+  "peer block w-full border-0 border-b border-paper/20 bg-transparent px-0 pt-7 pb-3 text-base text-paper transition-colors focus:border-paper/20 focus:ring-0 focus-visible:outline-none aria-[invalid=true]:border-[#F2A097]/70";
 
 function aria(id: string, error?: { message?: string }) {
   return {
@@ -252,17 +252,17 @@ function Field({
         className={cn(
           "pointer-events-none absolute left-0 origin-left transition-all duration-300 ease-expo-out",
           floated
-            ? "top-0 text-[0.65rem] tracking-label text-gold uppercase"
-            : "top-7 text-base text-muted peer-focus:top-0 peer-focus:text-[0.65rem] peer-focus:tracking-label peer-focus:text-gold peer-focus:uppercase peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-[0.65rem] peer-not-placeholder-shown:tracking-label peer-not-placeholder-shown:uppercase",
+            ? "top-0 text-[0.65rem] tracking-label text-red uppercase"
+            : "top-7 text-base text-paper/60 peer-focus:top-0 peer-focus:text-[0.65rem] peer-focus:tracking-label peer-focus:text-red peer-focus:uppercase peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-[0.65rem] peer-not-placeholder-shown:tracking-label peer-not-placeholder-shown:uppercase",
         )}
       >
         {label}
-        {required && <span className="text-gold"> *</span>}
+        {required && <span className="text-red"> *</span>}
       </label>
       {/* Gold focus line */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-500 ease-expo-out peer-focus:scale-x-100"
+        className="pointer-events-none absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-red transition-transform duration-500 ease-expo-out peer-focus:scale-x-100"
       />
       </div>
       {error && (
@@ -292,14 +292,14 @@ function SelectInput({
         id={id}
         aria-invalid={invalid || undefined}
         aria-describedby={invalid ? `${id}-error` : undefined}
-        className={cn(inputCls, "cursor-pointer appearance-none pr-8 [&>option]:bg-charcoal [&>option]:text-ivory")}
+        className={cn(inputCls, "cursor-pointer appearance-none pr-8 [&>option]:bg-surface [&>option]:text-paper")}
       >
         {children}
       </select>
       <svg
         aria-hidden="true"
         viewBox="0 0 12 8"
-        className="pointer-events-none absolute right-1 bottom-5 h-2 w-3 text-gold"
+        className="pointer-events-none absolute right-1 bottom-5 h-2 w-3 text-red"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.2"
@@ -320,7 +320,7 @@ function SuccessState({ name, whatsappHref, onReset }: { name: string; whatsappH
       transition={{ duration: 0.8, ease }}
       className="flex flex-col items-start"
     >
-      <svg viewBox="0 0 80 80" className="h-20 w-20 text-gold" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+      <svg viewBox="0 0 80 80" className="h-20 w-20 text-red" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
         <motion.circle
           cx="40"
           cy="40"
@@ -338,10 +338,10 @@ function SuccessState({ name, whatsappHref, onReset }: { name: string; whatsappH
           transition={{ duration: 0.6, delay: 0.7, ease }}
         />
       </svg>
-      <h3 className="mt-8 font-display text-4xl font-light text-ivory md:text-6xl">
-        Thank you, <em className="text-gold-soft">{name.split(" ")[0]}.</em>
+      <h3 className="mt-8 font-display text-4xl text-paper md:text-6xl">
+        Thank you, <em className="text-red">{name.split(" ")[0]}.</em>
       </h3>
-      <p className="mt-5 max-w-md leading-relaxed text-muted">
+      <p className="mt-5 max-w-md leading-relaxed text-paper/60">
         Your enquiry is with us. We usually reply within 2 hours — or continue the conversation on WhatsApp right now.
       </p>
       <div className="mt-10 flex flex-wrap gap-4">

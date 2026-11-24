@@ -11,6 +11,8 @@ export type SanityImage = {
   alt?: string | null;
   /** Tiny blurred preview (base64) from Sanity, used while the image loads. */
   lqip?: string | null;
+  /** Local stock image (demo content only) — used when no Sanity asset is set. */
+  src?: string | null;
 };
 
 export type PortableTextBlock = {

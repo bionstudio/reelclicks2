@@ -38,7 +38,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-3">
           <SectionLabel>Kind Words</SectionLabel>
-          <p aria-hidden="true" className="mt-8 font-display text-[120px] leading-none text-gold/40 md:text-[180px]">
+          <p aria-hidden="true" className="mt-6 font-serif text-[140px] leading-[0.8] text-red md:text-[220px]">
             &ldquo;
           </p>
         </div>
@@ -53,14 +53,14 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
                 exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <blockquote className="font-display text-3xl leading-[1.2] font-light text-ivory italic md:text-5xl xl:text-6xl">
+                <blockquote className="font-serif text-4xl leading-[1.1] text-paper italic md:text-6xl xl:text-7xl">
                   {t.quote}
                 </blockquote>
                 <figcaption className="mt-10 flex items-center gap-4">
-                  <span aria-hidden="true" className="h-px w-10 bg-gold" />
+                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-red" />
                   <span>
-                    <span className="block text-ivory">{t.name}</span>
-                    <span className="label mt-1 block text-muted">
+                    <span className="block font-semibold text-paper">{t.name}</span>
+                    <span className="label mt-1 block text-paper/60">
                       {[t.eventType, t.city].filter(Boolean).join(" · ")}
                     </span>
                   </span>
@@ -76,18 +76,18 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
                   <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              <span className="label text-muted">
-                <span className="text-ivory">{String(index + 1).padStart(2, "0")}</span> / {String(count).padStart(2, "0")}
+              <span className="label text-paper/60">
+                <span className="text-paper">{String(index + 1).padStart(2, "0")}</span> / {String(count).padStart(2, "0")}
               </span>
               <button type="button" onClick={() => go(1)} aria-label="Next testimonial" className="carousel-btn">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              <span aria-hidden="true" className="relative ml-2 h-px flex-1 bg-ivory/10">
+              <span aria-hidden="true" className="relative ml-2 h-1 flex-1 overflow-hidden rounded-full bg-paper/10">
                 <span
                   key={`${index}-${paused}`}
-                  className="absolute inset-0 origin-left bg-gold"
+                  className="absolute inset-0 origin-left bg-red"
                   style={{
                     // transform (not width) so the progress runs on the GPU without re-layout.
                     transform: paused || reduced ? `scaleX(${(index + 1) / count})` : undefined,
